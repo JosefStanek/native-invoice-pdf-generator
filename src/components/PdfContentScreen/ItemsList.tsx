@@ -1,5 +1,6 @@
 import { Text, FlatList, StyleSheet } from "react-native";
 import Item from "./Item";
+
 interface Item {
   id: string;
   title: string;
@@ -8,10 +9,9 @@ interface Item {
 }
 interface ItemsListProps {
   items: Item[];
-  deleteItem: (id: string) => void;
 }
 
-const ItemsList: React.FC<ItemsListProps> = ({ items, deleteItem }) => {
+const ItemsList: React.FC<ItemsListProps> = ({ items }) => {
   return (
     <>
       {items.length > 0 && (
@@ -19,7 +19,7 @@ const ItemsList: React.FC<ItemsListProps> = ({ items, deleteItem }) => {
           style={styles.itemList}
           data={items}
           renderItem={(item) => {
-            return <Item item={item.item} deleteItem={deleteItem} />;
+            return <Item item={item.item} />;
           }}
           keyExtractor={(item) => item.id}
         />

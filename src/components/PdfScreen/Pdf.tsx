@@ -3,8 +3,19 @@ import { WebView } from "react-native-webview";
 import { Button } from "react-native-paper";
 import { printToFileAsync } from "expo-print";
 import { useState } from "react";
+interface Item {
+  id: string;
+  title: string;
+  price: string;
+  DPHPrice: string;
+}
 
-const Pdf: React.FC = () => {
+interface PdfProps {
+  items: Item[];
+}
+
+const Pdf: React.FC<PdfProps> = ({ items }) => {
+  console.log(items);
   const [template, setTemplate] = useState(`
     <html>
     <head>

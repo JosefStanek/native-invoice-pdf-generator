@@ -3,44 +3,28 @@ import { Button, TextInput } from "react-native-paper";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import ItemsList from "../components/PdfContentScreen/ItemsList";
-import uuid from "react-native-uuid";
-interface Item {
-  id: string;
-  title: string;
-  price: string;
-  DPHPrice: string;
-}
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store/store";
+import { addItem } from "../store/Slices/itemsSlice";
 const PdfContentScreen: React.FC = () => {
+  const dispatch = useDispatch();
+  const { items } = useSelector((state: RootState) => state.items);
   const navigation = useNavigation<any>();
-  const [items, setItems] = useState<Item[]>([]);
   const [title, setTitle] = useState<string>("");
   const [price, setPrice] = useState<string>("");
 
-  const addItem = () => {
+  const addItemHandler = () => {
     if (!title || !price) {
       Alert.alert("Název i částku nesmít být prázdné.");
       return;
+    } else {
+      dispatch(addItem(title, price));
     }
-
-    const newItem = {
-      id: uuid.v4().toString(),
-      title: title,
-      price: price,
-      DPHPrice: (+price * 1.21).toFixed(2).toString(),
-    };
-    setItems((prev: Item[]) => [...prev, newItem]);
-  };
-
-  const deleteItem = (itemId: string) => {
-    const filteredData = items.filter((item) => {
-      return item.id !== itemId;
-    });
-    setItems(filteredData);
   };
 
   return (
     <View style={styles.screen}>
-      <ItemsList items={items} deleteItem={deleteItem} />
+      <ItemsList items={items} />
       <View style={styles.handler}>
         <TextInput
           label={"název"}
@@ -56,11 +40,11 @@ const PdfContentScreen: React.FC = () => {
           maxLength={7}
           onChangeText={(value) => setPrice(value)}
         />
-        <Button mode="contained" onPress={addItem}>
+        <Button mode="contained" onPress={addItemHandler}>
           přidat položku
         </Button>
       </View>
-      <Button onPress={() => navigation.navigate("PDF")}>
+      <Button onPress={() => navigation.navigate("PDF", { items })}>
         Vytvořit náhled
       </Button>
     </View>

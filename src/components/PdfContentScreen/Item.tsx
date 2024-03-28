@@ -1,12 +1,14 @@
+import { useDispatch } from "react-redux";
+import { deleteItem } from "../../store/Slices/itemsSlice";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
 interface ItemProps {
   item: { id: string; title: string; price: string; DPHPrice: string };
-  deleteItem: (id: string) => void;
 }
 
-const Item: React.FC<ItemProps> = ({ item, deleteItem }) => {
+const Item: React.FC<ItemProps> = ({ item }) => {
+  const dispatch = useDispatch();
   return (
     <View style={styles.item}>
       <View style={styles.itemContent}>
@@ -25,7 +27,7 @@ const Item: React.FC<ItemProps> = ({ item, deleteItem }) => {
       </View>
       <Pressable
         onPress={() => {
-          deleteItem(item.id);
+          dispatch(deleteItem(item.id));
         }}
       >
         <MaterialIcons name="delete" size={24} color="black" />
