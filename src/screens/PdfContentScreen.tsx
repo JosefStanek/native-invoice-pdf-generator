@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Alert } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -7,25 +7,28 @@ import uuid from "react-native-uuid";
 interface Item {
   id: string;
   title: string;
-  price: number;
-  DPHPrice: number;
+  price: string;
+  DPHPrice: string;
 }
 const PdfContentScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const [items, setItems] = useState<Item[]>([]);
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState<number>();
+  const [title, setTitle] = useState<string>("");
+  const [price, setPrice] = useState<string>("");
 
   const addItem = () => {
-    setItems((prev: Item[]) => [
-      ...prev,
-      {
-        id: uuid.v4(),
-        title: title,
-        price: price,
-        DPHprice: price * 1.21,
-      },
-    ]);
+    if (!title || !price) {
+      Alert.alert("Název i částku nesmít být prázdné.");
+      return;
+    }
+
+    const newItem = {
+      id: uuid.v4().toString(),
+      title: title,
+      price: price,
+      DPHPrice: (+price * 1.21).toFixed(2).toString(),
+    };
+    setItems((prev: Item[]) => [...prev, newItem]);
   };
 
   const deleteItem = (itemId: string) => {
@@ -48,8 +51,9 @@ const PdfContentScreen: React.FC = () => {
         <TextInput
           label={"částka"}
           mode="outlined"
-          value={price}
-          keyboardType="number-pad"
+          value={price?.toString()}
+          keyboardType="numeric"
+          maxLength={7}
           onChangeText={(value) => setPrice(value)}
         />
         <Button mode="contained" onPress={addItem}>

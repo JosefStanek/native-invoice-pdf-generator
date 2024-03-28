@@ -3,8 +3,8 @@ import Item from "./Item";
 interface Item {
   id: string;
   title: string;
-  price: number;
-  DPHPrice: number;
+  price: string;
+  DPHPrice: string;
 }
 interface ItemsListProps {
   items: Item[];

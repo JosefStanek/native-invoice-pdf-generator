@@ -2,7 +2,7 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
 interface ItemProps {
-  item: { id: string; title: string; price: number; DPHprice: number };
+  item: { id: string; title: string; price: string; DPHPrice: string };
   deleteItem: (id: string) => void;
 }
 
@@ -10,9 +10,18 @@ const Item: React.FC<ItemProps> = ({ item, deleteItem }) => {
   return (
     <View style={styles.item}>
       <View style={styles.itemContent}>
-        <Text>Položka: {item.title}</Text>
-        <Text>Částka: {item.price}</Text>
-        <Text>S DPH: {item.DPHprice}</Text>
+        <View>
+          <Text>Položka:</Text>
+          <Text> {item.title}</Text>
+        </View>
+        <View>
+          <Text>Částka:</Text>
+          <Text>{item.price}</Text>
+        </View>
+        <View>
+          <Text>S DPH:</Text>
+          <Text>{item.DPHPrice}</Text>
+        </View>
       </View>
       <Pressable
         onPress={() => {
