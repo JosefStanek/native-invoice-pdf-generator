@@ -13,11 +13,21 @@ interface Item {
 
 interface PdfProps {
   items: Item[];
+  subscriber: {
+    companyName: string;
+    street: string;
+    numberStreet: string;
+    zipCode: string;
+    city: string;
+    ico: string;
+    dic: string;
+    email: string;
+  };
 }
 
-const Pdf: React.FC<PdfProps> = ({ items }) => {
+const Pdf: React.FC<PdfProps> = ({ items, subscriber }) => {
   console.log(items);
-  const template = basicTemplate(items);
+  const template = basicTemplate(items, subscriber);
   const createPdf = async () => {
     try {
       const { uri } = await printToFileAsync({ html: template });

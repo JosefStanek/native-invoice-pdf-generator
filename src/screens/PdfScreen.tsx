@@ -7,11 +7,12 @@ import EmptySkeleton from "../components/PdfScreen/EmptySkeleton";
 
 const PdfScreen: React.FC = () => {
   const { items } = useSelector((state: RootState) => state.items);
-  const validItems = items.length > 0;
+  const subscriber = useSelector((state: RootState) => state.subscriber);
+  const validItems = items.length > 0 && subscriber;
   const data = validItems;
   return (
     <View style={styles.container}>
-      {data && <Pdf items={items} />}
+      {data && <Pdf items={items} subscriber={subscriber} />}
       {!data && <EmptySkeleton />}
     </View>
   );

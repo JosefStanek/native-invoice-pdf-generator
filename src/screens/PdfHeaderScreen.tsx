@@ -1,4 +1,4 @@
-import HeaderForm from "../components/reusable/HeaderForm";
+import HeaderForm from "../components/PdfHeaderScreen/HeaderForm";
 
 const PdfHeaderScreen: React.FC = () => {
   return <HeaderForm />;

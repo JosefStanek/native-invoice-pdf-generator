@@ -12,22 +12,12 @@ const initialState = {
     email: "",
     accountNumber: "",
   },
-  subscriber: {
-    companyName: "",
-    street: "",
-    numberStreet: "",
-    zipCode: "",
-    city: "",
-    ico: "",
-    dic: "",
-    email: "",
-  },
 };
 
-const headerSlice = createSlice({
-  name: "header",
+const senderSlice = createSlice({
+  name: "subscriber",
   initialState,
   reducers: {},
 });
 
-export default headerSlice.reducer;
+export default senderSlice.reducer;

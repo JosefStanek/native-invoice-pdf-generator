@@ -6,7 +6,18 @@ interface Item {
   DPHPrice: string;
 }
 
-export const basicTemplate = (items: Item[]) => {
+interface Subscriber {
+  companyName: string;
+  street: string;
+  numberStreet: string;
+  zipCode: string;
+  city: string;
+  ico: string;
+  dic: string;
+  email: string;
+}
+
+export const basicTemplate = (items: Item[], subscriber: Subscriber) => {
   const itemsHtml = items
     .map((item: Item) => {
       return `<tr>
@@ -50,10 +61,10 @@ export const basicTemplate = (items: Item[]) => {
     
         <div class="header-section">
         <strong>Odběratel:</strong><br>
-        Firma: Novotelco<br>
-        Adresa: Novodvorská, 121/1<br>
-        Město: Praha<br>
-        IČO: 12345678, DIČ: CZ12345678<br>
+        Firma: ${subscriber.companyName}<br>
+        Adresa: ${subscriber.street}, ${subscriber.numberStreet}<br>
+        Město: ${subscriber.city}<br>
+        IČO: ${subscriber.ico}, DIČ: ${subscriber.zipCode}<br>
         </div>
     </div>
     
