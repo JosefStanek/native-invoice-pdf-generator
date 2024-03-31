@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
 import CreateScreen from "../screens/CreateScreen";
 import PdfScreen from "../screens/PdfScreen";
+import TemplatesScreen from "../screens/TemplatesScreen";
 const Tab = createBottomTabNavigator();
 const Navigation: React.FC = () => {
   return (
@@ -24,6 +25,16 @@ const Navigation: React.FC = () => {
             title: "Vytvořit pdf",
             tabBarIcon: ({ color }) => (
               <MaterialIcons name="add-box" size={24} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Templates"
+          component={TemplatesScreen}
+          options={{
+            title: "Šablony",
+            tabBarIcon: ({ color }) => (
+              <MaterialIcons name="list-alt" size={24} color={color} />
             ),
           }}
         />

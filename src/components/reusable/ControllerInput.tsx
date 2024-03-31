@@ -1,4 +1,5 @@
-import { TextInput, Text } from "react-native-paper";
+import { TextInput } from "react-native-paper";
+import { StyleSheet } from "react-native";
 import { Controller } from "react-hook-form";
 
 interface ControllerInputProps {
@@ -25,11 +26,18 @@ const ControllerInput: React.FC<ControllerInputProps> = ({
           onChangeText={onChange}
           value={value}
           onBlur={onBlur}
+          style={styles.input}
         />
       )}
       name={name}
     />
   );
 };
+
+const styles = StyleSheet.create({
+  input: {
+    backgroundColor: "white",
+  },
+});
 
 export default ControllerInput;

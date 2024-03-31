@@ -1,4 +1,6 @@
 import moment from "moment";
+import Handlebars from "handlebars";
+
 interface Item {
   id: string;
   title: string;
@@ -17,7 +19,7 @@ interface Subscriber {
   email: string;
 }
 
-export const basicTemplate = (items: Item[], subscriber: Subscriber) => {
+export const smoothTemplate = (items: Item[], subscriber: Subscriber) => {
   const itemsHtml = items
     .map((item: Item) => {
       return `<tr>
@@ -34,7 +36,7 @@ export const basicTemplate = (items: Item[], subscriber: Subscriber) => {
   return `
     <html>
     <head>
-        <title>Basic Template</title>
+        <title>Smooth Template</title>
         <style>
             body { font-family: Arial, sans-serif; padding: 1rem }
             .header{ text-align: left;display:flex;justify-content: space-around }
