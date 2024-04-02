@@ -1,15 +1,17 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
+import UserScreen from "../screens/UserScreen";
 import CreateScreen from "../screens/CreateScreen";
 import PdfScreen from "../screens/PdfScreen";
 import TemplatesScreen from "../screens/TemplatesScreen";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 const Tab = createBottomTabNavigator();
 const Navigation: React.FC = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        initialRouteName="User"
         screenOptions={{
           tabBarShowLabel: false,
           tabBarStyle: {
@@ -17,6 +19,21 @@ const Navigation: React.FC = () => {
           },
         }}
       >
+        <Tab.Screen
+          name="User"
+          component={UserScreen}
+          options={{
+            title: "Šablony",
+            tabBarIcon: ({ focused, color }) => (
+              <MaterialIcons
+                name="person"
+                size={24}
+                color={color}
+                style={focused ? styles.focused : null}
+              />
+            ),
+          }}
+        />
         <Tab.Screen
           name="PDF"
           component={PdfScreen}

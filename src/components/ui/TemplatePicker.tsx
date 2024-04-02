@@ -1,8 +1,13 @@
 import { Picker } from "@react-native-picker/picker";
 import { StyleSheet, View } from "react-native";
 import { useState } from "react";
-
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 const TemplatePicker: React.FC = () => {
+  const { currentTemplatePath } = useSelector(
+    (state: RootState) => state.template
+  );
+
   const [selectedTemplate, setSelectedTemplate] = useState("template1");
 
   return (

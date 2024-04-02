@@ -61,10 +61,14 @@ export const basicTemplate = (items: Item[], subscriber: Subscriber) => {
     
         <div class="header-section">
         <strong>Odběratel:</strong><br>
-        Firma: ${subscriber.companyName}<br>
-        Adresa: ${subscriber.street}, ${subscriber.numberStreet}<br>
-        Město: ${subscriber.city}<br>
-        IČO: ${subscriber.ico}, DIČ: ${subscriber.zipCode}<br>
+        Firma: ${subscriber.companyName ? subscriber.companyName : ""}<br>
+        Adresa: ${subscriber.street ? subscriber.street : ""}, ${
+    subscriber.numberStreet ? subscriber.numberStreet : ""
+  }<br>
+        Město: ${subscriber.city ? subscriber.city : ""}<br>
+        IČO: ${subscriber.ico ? subscriber.ico : ""}, DIČ: ${
+    subscriber.zipCode ? subscriber.zipCode : ""
+  }<br>
         </div>
     </div>
     
@@ -77,11 +81,11 @@ export const basicTemplate = (items: Item[], subscriber: Subscriber) => {
             </tr>
         </thead>
         <tbody>
-        ${itemsHtml}
+        ${itemsHtml ? itemsHtml : ""}
         <tr>
             <td>Celkem</td>
-            <td><strong>${total} Kč</strong></td>
-            <td><strong>${totalwithDPH} Kč</strong></td> 
+            <td><strong>${total ? total : ""} Kč</strong></td>
+            <td><strong>${totalwithDPH ? totalwithDPH : ""} Kč</strong></td> 
             </tr>
         </tbody>
     </table>
