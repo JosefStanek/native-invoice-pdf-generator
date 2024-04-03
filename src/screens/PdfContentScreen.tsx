@@ -6,6 +6,7 @@ import ItemsList from "../components/PdfContentScreen/ItemsList";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store/store";
 import { addItem } from "../store/Slices/itemsSlice";
+import ScreenWrapper from "../components/ui/ScreenWrapper";
 const PdfContentScreen: React.FC = () => {
   const dispatch = useDispatch();
   const { items } = useSelector((state: RootState) => state.items);
@@ -23,7 +24,7 @@ const PdfContentScreen: React.FC = () => {
   };
 
   return (
-    <View style={styles.screen}>
+    <ScreenWrapper>
       <ItemsList items={items} />
       <View style={styles.handler}>
         <TextInput
@@ -47,7 +48,7 @@ const PdfContentScreen: React.FC = () => {
       <Button onPress={() => navigation.navigate("PDF", { items })}>
         Vytvořit náhled
       </Button>
-    </View>
+    </ScreenWrapper>
   );
 };
 

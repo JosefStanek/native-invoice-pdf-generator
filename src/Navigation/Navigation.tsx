@@ -5,7 +5,7 @@ import UserScreen from "../screens/UserScreen";
 import CreateScreen from "../screens/CreateScreen";
 import PdfScreen from "../screens/PdfScreen";
 import TemplatesScreen from "../screens/TemplatesScreen";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { RootTabParamList } from "../types/NavigationType";
 import { useTheme } from "react-native-paper";
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -20,9 +20,11 @@ const Navigation: React.FC = () => {
           tabBarShowLabel: false,
           tabBarStyle: {
             height: 60,
+            backgroundColor: theme.colors.primary,
           },
           headerStyle: { backgroundColor: theme.colors.primary },
           tabBarActiveTintColor: theme.colors.primary,
+          tabBarInactiveTintColor: theme.colors.secondary,
         }}
       >
         <Tab.Screen
@@ -31,12 +33,9 @@ const Navigation: React.FC = () => {
           options={{
             title: "Hlavička",
             tabBarIcon: ({ focused, color }) => (
-              <MaterialIcons
-                name="person"
-                size={24}
-                color={color}
-                style={focused ? styles.focused : null}
-              />
+              <View style={focused ? styles.focused : null}>
+                <MaterialIcons name="person" size={24} color={color} />
+              </View>
             ),
           }}
         />
@@ -46,12 +45,9 @@ const Navigation: React.FC = () => {
           options={{
             title: "Vytvořit pdf",
             tabBarIcon: ({ focused, color }) => (
-              <MaterialIcons
-                name="add-box"
-                size={24}
-                color={color}
-                style={focused ? styles.focused : null}
-              />
+              <View style={focused ? styles.focused : null}>
+                <MaterialIcons name="add-box" size={24} color={color} />
+              </View>
             ),
           }}
         />
@@ -60,12 +56,9 @@ const Navigation: React.FC = () => {
           component={PdfScreen}
           options={{
             tabBarIcon: ({ focused, color }) => (
-              <MaterialIcons
-                name="picture-as-pdf"
-                size={24}
-                color={color}
-                style={focused ? styles.focused : null}
-              />
+              <View style={focused ? styles.focused : null}>
+                <MaterialIcons name="picture-as-pdf" size={24} color={color} />
+              </View>
             ),
           }}
         />
@@ -92,12 +85,13 @@ const Navigation: React.FC = () => {
 
 const styles = StyleSheet.create({
   focused: {
+    justifyContent: "center",
+    alignItems: "center",
     width: 70,
     aspectRatio: 1,
     position: "relative",
     top: -25,
     backgroundColor: "white",
-    padding: 20,
     borderRadius: 400,
     textAlign: "center",
   },

@@ -1,11 +1,20 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import PdfHeaderScreen from "../screens/PdfHeaderScreen";
 import PdfContentScreen from "../screens/PdfContentScreen";
+import { useTheme } from "react-native-paper";
 const Stack = createStackNavigator();
 
 const CreateStackNavigatior = () => {
+  const theme = useTheme();
   return (
-    <Stack.Navigator initialRouteName="Header">
+    <Stack.Navigator
+      initialRouteName="Header"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: theme.colors.primary,
+        },
+      }}
+    >
       <Stack.Screen
         name="Header"
         options={{ headerTitle: "Odběratel" }}

@@ -1,8 +1,8 @@
-import { View, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import Pdf from "../components/PdfScreen/Pdf";
 import EmptySkeleton from "../components/PdfScreen/EmptySkeleton";
+import ScreenWrapper from "../components/ui/ScreenWrapper";
 
 const PdfScreen: React.FC = () => {
   const { items } = useSelector((state: RootState) => state.items);
@@ -14,18 +14,11 @@ const PdfScreen: React.FC = () => {
 
   const data = validItems && validSubscriber && validSender;
   return (
-    <View style={styles.container}>
+    <ScreenWrapper>
       {data && <Pdf items={items} subscriber={subscriber} />}
       {!data && <EmptySkeleton />}
-    </View>
+    </ScreenWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 10,
-  },
-});
 
 export default PdfScreen;
