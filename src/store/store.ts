@@ -8,7 +8,7 @@ export const store = configureStore({
     items: itemsReducer,
     subscriber: subscriberSlice,
     sender: senderSlice,
-    template: templateSlice,
+    // template: templateSlice,
   },
 });
 

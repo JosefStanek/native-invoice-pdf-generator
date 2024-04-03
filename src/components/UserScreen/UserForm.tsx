@@ -3,28 +3,35 @@ import { useForm } from "react-hook-form";
 import ControllerInput from "../reusable/ControllerInput";
 import { Button } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-interface formData {
-  senderAccountNumber: string;
-  senderCity: string;
-  senderCompanyName: string;
-  senderDic: string;
-  senderEmail: string;
-  senderIco: string;
-  senderNumberStreet: string;
-  senderStreet: string;
-  senderZipCode: string;
-}
-
+import { MaterialIcons } from "@expo/vector-icons";
+import { formData } from "../../types/DataTypes";
+import { useDispatch, useSelector } from "react-redux";
+import { setSender } from "../../store/Slices/senderSlice";
+import { Toast } from "toastify-react-native";
+import { RootState } from "../../store/store";
 interface UserFormProps {
-  defaultValue: formData;
+  closeModal: () => void;
 }
-const UserForm: React.FC<UserFormProps> = ({ defaultValue }) => {
+const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
+  const sender = useSelector((state: RootState) => state.sender);
+  const dispatch = useDispatch();
   const { control, handleSubmit, reset } = useForm<formData>({
-    defaultValues: defaultValue,
+    defaultValues: { ...sender } || {
+      senderAccountNumber: "",
+      senderCity: "",
+      senderCompanyName: "",
+      senderDic: "",
+      senderEmail: "",
+      senderIco: "",
+      senderNumberStreet: "",
+      senderStreet: "",
+      senderZipCode: "",
+    },
   });
   const senderDataHandler = async (data: formData) => {
     try {
       await AsyncStorage.setItem("userData", JSON.stringify(data));
+      dispatch(setSender(data));
       reset({
         senderAccountNumber: "",
         senderCity: "",
@@ -36,81 +43,96 @@ const UserForm: React.FC<UserFormProps> = ({ defaultValue }) => {
         senderStreet: "",
         senderZipCode: "",
       });
+      closeModal();
+      Toast.success("Uložení proběhlo v pořádku", "bottom");
     } catch (error) {
       console.error("Chyba při ukládání formulářových dat:", error);
     }
   };
   return (
-    <ScrollView style={styles.form}>
-      <View style={styles.formFlexbox}>
-        <Text style={styles.formTitle}>Vytvořit hlavičku uživatele</Text>
-        <ControllerInput
-          name="senderCompanyName"
-          required={true}
-          label="Jméno firmy"
-          control={control}
-        />
-        <ControllerInput
-          name="senderStreet"
-          required={true}
-          label="Ulice"
-          control={control}
-        />
-        <ControllerInput
-          name="senderNumberStreet"
-          required={true}
-          label="číslo ulice např: 1021/2"
-          control={control}
-        />
-        <ControllerInput
-          name="senderCity"
-          required={true}
-          label="Město"
-          control={control}
-        />
-        <ControllerInput
-          name="senderZipCode"
-          required={true}
-          label="PSČ"
-          control={control}
-        />
-        <ControllerInput
-          name="senderIco"
-          required={true}
-          label="IČO - Identifikační číslo"
-          control={control}
-        />
-        <ControllerInput
-          name="senderDic"
-          required={true}
-          label="DIČ - Identifikační číslo"
-          control={control}
-        />
-        <ControllerInput
-          name="senderEmail"
-          required={true}
-          label="Email"
-          control={control}
-        />
-        <ControllerInput
-          name="senderAccountNumber"
-          required={true}
-          label="Číslo účtu"
-          control={control}
-        />
-        <Button
-          style={styles.formBtn}
-          mode="contained"
-          onPress={handleSubmit(senderDataHandler)}
-        >
-          vytvořit hlavičku
-        </Button>
-      </View>
-    </ScrollView>
+    <>
+      <ScrollView style={styles.form}>
+        <View style={styles.closeContainer}>
+          <MaterialIcons
+            name="close"
+            size={30}
+            color="black"
+            onPress={closeModal}
+          />
+        </View>
+        <View style={styles.formFlexbox}>
+          <Text style={styles.formTitle}>Vytvořit hlavičku uživatele</Text>
+          <ControllerInput
+            name="senderCompanyName"
+            required={true}
+            label="Jméno firmy"
+            control={control}
+          />
+          <ControllerInput
+            name="senderStreet"
+            required={true}
+            label="Ulice"
+            control={control}
+          />
+          <ControllerInput
+            name="senderNumberStreet"
+            required={true}
+            label="číslo ulice"
+            control={control}
+          />
+          <ControllerInput
+            name="senderCity"
+            required={true}
+            label="Město"
+            control={control}
+          />
+          <ControllerInput
+            name="senderZipCode"
+            required={true}
+            label="PSČ"
+            control={control}
+          />
+          <ControllerInput
+            name="senderIco"
+            required={true}
+            label="IČO "
+            control={control}
+          />
+          <ControllerInput
+            name="senderDic"
+            required={true}
+            label="DIČ "
+            control={control}
+          />
+          <ControllerInput
+            name="senderEmail"
+            required={true}
+            label="Email"
+            control={control}
+          />
+          <ControllerInput
+            name="senderAccountNumber"
+            required={true}
+            label="Číslo účtu"
+            control={control}
+          />
+          <Button
+            style={styles.formBtn}
+            mode="contained"
+            onPress={handleSubmit(senderDataHandler)}
+          >
+            vytvořit hlavičku
+          </Button>
+        </View>
+      </ScrollView>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
+  closeContainer: {
+    marginLeft: "auto",
+  },
   form: {
     padding: 10,
   },

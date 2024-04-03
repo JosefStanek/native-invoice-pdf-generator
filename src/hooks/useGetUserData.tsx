@@ -1,8 +1,21 @@
 import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useDispatch } from "react-redux";
+import { setSender } from "../store/Slices/senderSlice";
 
 const useGetUserData = () => {
-  const [data, setData] = useState(null);
+  const dispatch = useDispatch();
+  const [data, setData] = useState({
+    senderCompanyName: "",
+    senderStreet: "",
+    senderNumberStreet: "",
+    senderZipCode: "",
+    senderCity: "",
+    senderIco: "",
+    senderDic: "",
+    senderEmail: "",
+    senderAccountNumber: "",
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -10,7 +23,9 @@ const useGetUserData = () => {
     try {
       const value = await AsyncStorage.getItem("userData");
       if (value !== null) {
-        setData(JSON.parse(value));
+        const parsedData = JSON.parse(value);
+        setData(parsedData);
+        dispatch(setSender(parsedData));
       }
     } catch (error: any) {
       setError(error);

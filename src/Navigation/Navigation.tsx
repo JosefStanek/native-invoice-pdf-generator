@@ -6,7 +6,9 @@ import CreateScreen from "../screens/CreateScreen";
 import PdfScreen from "../screens/PdfScreen";
 import TemplatesScreen from "../screens/TemplatesScreen";
 import { StyleSheet } from "react-native";
-const Tab = createBottomTabNavigator();
+import { RootTabParamList } from "../types/NavigationType";
+
+const Tab = createBottomTabNavigator<RootTabParamList>();
 const Navigation: React.FC = () => {
   return (
     <NavigationContainer>
@@ -23,7 +25,7 @@ const Navigation: React.FC = () => {
           name="User"
           component={UserScreen}
           options={{
-            title: "Šablony",
+            title: "Hlavička",
             tabBarIcon: ({ focused, color }) => (
               <MaterialIcons
                 name="person"
@@ -34,7 +36,7 @@ const Navigation: React.FC = () => {
             ),
           }}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           name="PDF"
           component={PdfScreen}
           options={{
@@ -77,7 +79,7 @@ const Navigation: React.FC = () => {
               />
             ),
           }}
-        />
+        /> */}
       </Tab.Navigator>
     </NavigationContainer>
   );
