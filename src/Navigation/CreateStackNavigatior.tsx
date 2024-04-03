@@ -8,7 +8,7 @@ const CreateStackNavigatior = () => {
     <Stack.Navigator initialRouteName="Header">
       <Stack.Screen
         name="Header"
-        options={{ headerTitle: "Záhlaví" }}
+        options={{ headerTitle: "Odběratel" }}
         component={PdfHeaderScreen}
       />
       <Stack.Screen

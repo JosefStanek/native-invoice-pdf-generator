@@ -16,8 +16,23 @@ interface Subscriber {
   dic: string;
   email: string;
 }
+interface Sender {
+  senderCompanyName: string;
+  senderStreet: string;
+  senderNumberStreet: string;
+  senderZipCode: string;
+  senderCity: string;
+  senderIco: string;
+  senderDic: string;
+  senderEmail: string;
+  senderAccountNumber: string;
+}
 
-export const basicTemplate = (items: Item[], subscriber: Subscriber) => {
+export const basicTemplate = (
+  items: Item[],
+  subscriber: Subscriber,
+  sender: Sender
+) => {
   const itemsHtml = items
     .map((item: Item) => {
       return `<tr>
@@ -50,12 +65,11 @@ export const basicTemplate = (items: Item[], subscriber: Subscriber) => {
     <div class="header">
         <div class="header-section">
             <strong>Odesílatel:</strong><br>
-            Firma: Novotelco<br>
-            Adresa: Novodvorská, 121/1<br>
-            Město: Praha<br>
-            IČO: 12345678, DIČ: CZ12345678<br>
-            Email: test@test.cz<br>
-            Telefon: 111 222 333<br>
+            Firma: ${sender.senderCompanyName}<br>
+            Adresa: ${sender.senderStreet}, ${sender.senderNumberStreet}<br>
+            Město: ${sender.senderCity}<br>
+            IČO:${sender.senderIco}, DIČ: CZ${sender.senderDic}<br>
+            Email: ${sender.senderEmail}<br>
       
         </div>
     
@@ -92,7 +106,9 @@ export const basicTemplate = (items: Item[], subscriber: Subscriber) => {
     
     <div class="footer">
         <p>Datum vystavení: ${moment().format("DD.MM.YYYY")}</p>
-        <p>Částku prosím uhraďte na bankovní účet:<strong> 932783278923/800</strong></p>
+        <p>Částku prosím uhraďte na bankovní účet:<strong> ${
+          sender.senderAccountNumber
+        }</strong></p>
         <p>Děkujeme za vaši objednávku!</p>
     </div>
     

@@ -5,6 +5,7 @@ const EmptySkeleton = () => {
   return (
     <View style={styles.emptyBox}>
       <Text style={styles.emptyTitle}>Náhled pro PDF.</Text>
+      <Text style={styles.emptyTitle}>Prosím nezapomeň vyplnit hlavičku.</Text>
       <Text style={styles.emptyTitle}>Nejdřív musíš vytvořit PDF.</Text>
     </View>
   );

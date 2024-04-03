@@ -2,8 +2,9 @@ import { View, Alert, StyleSheet } from "react-native";
 import { WebView } from "react-native-webview";
 import { Button } from "react-native-paper";
 import { printToFileAsync } from "expo-print";
-import { useState } from "react";
 import { basicTemplate } from "../templates/BasicTemplate";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 interface Item {
   id: string;
   title: string;
@@ -26,8 +27,8 @@ interface PdfProps {
 }
 
 const Pdf: React.FC<PdfProps> = ({ items, subscriber }) => {
-  console.log(items);
-  const template = basicTemplate(items, subscriber);
+  const sender = useSelector((state: RootState) => state.sender);
+  const template = basicTemplate(items, subscriber, sender);
   const createPdf = async () => {
     try {
       const { uri } = await printToFileAsync({ html: template });

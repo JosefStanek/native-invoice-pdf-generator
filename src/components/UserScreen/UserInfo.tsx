@@ -3,6 +3,7 @@ import { RootState } from "../../store/store";
 import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 import { resetSender } from "../../store/Slices/senderSlice";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const UserInfo: React.FC = () => {
   const dispatch = useDispatch();
   const {
@@ -17,7 +18,10 @@ const UserInfo: React.FC = () => {
     senderZipCode,
   } = useSelector((state: RootState) => state.sender);
 
-  const resetSender = () => {};
+  const resetSenderHandler = async () => {
+    await AsyncStorage.removeItem("userData");
+    dispatch(resetSender());
+  };
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
@@ -53,7 +57,11 @@ const UserInfo: React.FC = () => {
         <Text>{senderAccountNumber}</Text>
       </View>
       <View style={styles.btnContainer}>
-        <Button style={styles.deleteBtn} mode="contained">
+        <Button
+          style={styles.deleteBtn}
+          mode="contained"
+          onPress={resetSenderHandler}
+        >
           smazat
         </Button>
       </View>

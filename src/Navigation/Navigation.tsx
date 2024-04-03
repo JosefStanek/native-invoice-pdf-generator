@@ -7,9 +7,11 @@ import PdfScreen from "../screens/PdfScreen";
 import TemplatesScreen from "../screens/TemplatesScreen";
 import { StyleSheet } from "react-native";
 import { RootTabParamList } from "../types/NavigationType";
-
+import { useTheme } from "react-native-paper";
 const Tab = createBottomTabNavigator<RootTabParamList>();
+
 const Navigation: React.FC = () => {
+  const theme = useTheme();
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -19,6 +21,8 @@ const Navigation: React.FC = () => {
           tabBarStyle: {
             height: 60,
           },
+          headerStyle: { backgroundColor: theme.colors.primary },
+          tabBarActiveTintColor: theme.colors.primary,
         }}
       >
         <Tab.Screen
@@ -29,20 +33,6 @@ const Navigation: React.FC = () => {
             tabBarIcon: ({ focused, color }) => (
               <MaterialIcons
                 name="person"
-                size={24}
-                color={color}
-                style={focused ? styles.focused : null}
-              />
-            ),
-          }}
-        />
-        {/* <Tab.Screen
-          name="PDF"
-          component={PdfScreen}
-          options={{
-            tabBarIcon: ({ focused, color }) => (
-              <MaterialIcons
-                name="picture-as-pdf"
                 size={24}
                 color={color}
                 style={focused ? styles.focused : null}
@@ -66,6 +56,21 @@ const Navigation: React.FC = () => {
           }}
         />
         <Tab.Screen
+          name="PDF"
+          component={PdfScreen}
+          options={{
+            tabBarIcon: ({ focused, color }) => (
+              <MaterialIcons
+                name="picture-as-pdf"
+                size={24}
+                color={color}
+                style={focused ? styles.focused : null}
+              />
+            ),
+          }}
+        />
+
+        {/* <Tab.Screen
           name="Templates"
           component={TemplatesScreen}
           options={{

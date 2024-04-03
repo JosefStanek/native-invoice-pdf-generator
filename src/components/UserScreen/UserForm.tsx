@@ -44,7 +44,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
         senderZipCode: "",
       });
       closeModal();
-      Toast.success("Uložení proběhlo v pořádku", "bottom");
+      Toast.success("uloženo", "bottom");
     } catch (error) {
       console.error("Chyba při ukládání formulářových dat:", error);
     }

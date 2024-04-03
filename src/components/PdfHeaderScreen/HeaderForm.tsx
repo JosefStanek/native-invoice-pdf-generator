@@ -64,7 +64,6 @@ const HeaderForm: React.FC = () => {
   };
   return (
     <ScrollView style={{ padding: 10.0 }}>
-      <Text style={styles.title}>Odběratel</Text>
       <View style={{ gap: 10 }}>
         <ControllerInput
           name="subscriberCompanyName"
@@ -159,10 +158,6 @@ const HeaderForm: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 16,
-    paddingVertical: 10,
-  },
   error: {
     color: "red",
   },
