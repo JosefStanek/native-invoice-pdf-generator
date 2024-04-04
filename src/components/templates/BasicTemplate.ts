@@ -51,9 +51,10 @@ export const basicTemplate = (
     <head>
         <title>Basic Template</title>
         <style>
+            h1{text-align:center;padding:1rem}
             body { font-family: Arial, sans-serif; padding: 1rem }
             .header{ text-align: left;display:flex;justify-content: space-around }
-            .header-section { margin-bottom: 20px; border:1px solid #ddd; padding:1rem }
+            .header-section { margin-bottom: 20px; padding:1rem }
             .invoice-table { width: 100%; border-collapse: collapse; }
             .invoice-table th, .invoice-table td { border: 1px solid #ddd; padding: 8px; }
             .invoice-table th { background-color: #f2f2f2; }
@@ -62,6 +63,9 @@ export const basicTemplate = (
     </head>
     <body>
     
+  <div>
+  <h1>Faktura - daňový doklad</h1>
+  </div>
     <div class="header">
         <div class="header-section">
             <strong>Odesílatel:</strong><br>
@@ -105,7 +109,12 @@ export const basicTemplate = (
     </table>
     
     <div class="footer">
-        <p>Datum vystavení: ${moment().format("DD.MM.YYYY")}</p>
+        <p>Datum vystavení:<strong> ${moment().format(
+          "DD.MM.YYYY"
+        )}</strong></p>
+        <p>Datum splatnosti: <strong> ${moment()
+          .add(30, "days")
+          .format("DD.MM.YYYY")}</strong></p>
         <p>Částku prosím uhraďte na bankovní účet:<strong> ${
           sender.senderAccountNumber
         }</strong></p>
