@@ -2,12 +2,13 @@ import { MD3LightTheme as LightSchema } from "react-native-paper";
 
 export const LightTheme = {
   ...LightSchema,
+  text: "#ffffff",
   colors: {
-    primary: "#526D82",
+    primary: "#222831",
     onPrimary: "rgb(255, 255, 255)",
     primaryContainer: "rgb(240, 219, 255)",
     onPrimaryContainer: "rgb(44, 0, 81)",
-    secondary: "#ffffff",
+    secondary: "#76ABAE",
     onSecondary: "rgb(255, 255, 255)",
     secondaryContainer: "rgb(237, 221, 246)",
     onSecondaryContainer: "rgb(33, 24, 42)",
@@ -19,7 +20,7 @@ export const LightTheme = {
     onError: "rgb(255, 255, 255)",
     errorContainer: "rgb(255, 218, 214)",
     onErrorContainer: "rgb(65, 0, 2)",
-    background: "#DDE6ED",
+    background: "#ffffff",
     onBackground: "rgb(29, 27, 30)",
     surface: "rgb(255, 251, 255)",
     onSurface: "rgb(29, 27, 30)",

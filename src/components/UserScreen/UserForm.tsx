@@ -60,7 +60,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
   return (
     <>
       <ScrollView
-        style={[styles.form, { backgroundColor: theme.colors.primary }]}
+        style={[styles.form, { backgroundColor: theme.colors.onSecondary }]}
       >
         <View style={styles.closeContainer}>
           <MaterialIcons

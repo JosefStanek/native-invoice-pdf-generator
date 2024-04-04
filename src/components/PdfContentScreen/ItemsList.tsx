@@ -1,4 +1,5 @@
-import { Text, FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
+import { Text } from "react-native-paper";
 import Item from "./Item";
 
 interface Item {
@@ -24,7 +25,9 @@ const ItemsList: React.FC<ItemsListProps> = ({ items }) => {
           keyExtractor={(item) => item.id}
         />
       )}
-      {items.length === 0 && <Text>Přidej položku</Text>}
+      {items.length === 0 && (
+        <Text style={styles.titleItem}>Přidej položku</Text>
+      )}
     </>
   );
 };
@@ -34,6 +37,9 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
     maxHeight: 400,
+  },
+  titleItem: {
+    padding: 10,
   },
 });
 

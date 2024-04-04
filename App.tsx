@@ -9,7 +9,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <ThemeProvider>
-        <StatusBar style="auto" />
+        <StatusBar style="light" />
         <Navigation />
         <ToastManager />
       </ThemeProvider>
