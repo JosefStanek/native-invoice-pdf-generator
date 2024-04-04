@@ -1,10 +1,10 @@
 import { View, Alert, StyleSheet } from "react-native";
 import { WebView } from "react-native-webview";
-import { Button } from "react-native-paper";
 import { printToFileAsync } from "expo-print";
 import { basicTemplate } from "../templates/BasicTemplate";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import BasicButton from "../ui/BasicButton";
 interface Item {
   id: string;
   title: string;
@@ -46,9 +46,12 @@ const Pdf: React.FC<PdfProps> = ({ items, subscriber }) => {
         style={styles.webview}
       />
       <View style={styles.actions}>
-        <Button mode="contained" onPress={createPdf}>
-          Vytvořit PDF
-        </Button>
+        <BasicButton
+          uppercase
+          title=" Vytvořit PDF"
+          mode="outlined"
+          onPress={createPdf}
+        />
       </View>
     </>
   );
@@ -60,8 +63,8 @@ const styles = StyleSheet.create({
     height: 300,
   },
   actions: {
-    marginHorizontal: 30,
-    marginVertical: 20,
+    marginHorizontal: 20,
+    marginBottom: 40,
   },
 });
 

@@ -1,21 +1,29 @@
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import { useForm } from "react-hook-form";
 import ControllerInput from "../reusable/ControllerInput";
-import { Button } from "react-native-paper";
+import { Text, useTheme } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { MaterialIcons } from "@expo/vector-icons";
 import { formData } from "../../types/DataTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { setSender } from "../../store/Slices/senderSlice";
 import { Toast } from "toastify-react-native";
+import InputError from "../PdfHeaderScreen/InputError";
 import { RootState } from "../../store/store";
+import BasicButton from "../ui/BasicButton";
 interface UserFormProps {
   closeModal: () => void;
 }
 const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
+  const theme = useTheme();
   const sender = useSelector((state: RootState) => state.sender);
   const dispatch = useDispatch();
-  const { control, handleSubmit, reset } = useForm<formData>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<formData>({
     defaultValues: { ...sender } || {
       senderAccountNumber: "",
       senderCity: "",
@@ -51,12 +59,14 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
   };
   return (
     <>
-      <ScrollView style={styles.form}>
+      <ScrollView
+        style={[styles.form, { backgroundColor: theme.colors.primary }]}
+      >
         <View style={styles.closeContainer}>
           <MaterialIcons
             name="close"
             size={30}
-            color="black"
+            color={theme.colors.secondary}
             onPress={closeModal}
           />
         </View>
@@ -68,61 +78,86 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
             label="Jméno firmy"
             control={control}
           />
+          {errors.senderCompanyName && (
+            <InputError message="Pole nesmí být prázdné." />
+          )}
           <ControllerInput
             name="senderStreet"
             required={true}
             label="Ulice"
             control={control}
           />
+          {errors.senderStreet && (
+            <InputError message="Pole nesmí být prázdné." />
+          )}
           <ControllerInput
             name="senderNumberStreet"
             required={true}
             label="číslo ulice"
             control={control}
           />
+          {errors.senderNumberStreet && (
+            <InputError message="Pole nesmí být prázdné." />
+          )}
           <ControllerInput
             name="senderCity"
             required={true}
             label="Město"
             control={control}
           />
+          {errors.senderCity && (
+            <InputError message="Pole nesmí být prázdné." />
+          )}
           <ControllerInput
             name="senderZipCode"
             required={true}
             label="PSČ"
             control={control}
           />
+          {errors.senderZipCode && (
+            <InputError message="Pole nesmí být prázdné." />
+          )}
           <ControllerInput
             name="senderIco"
             required={true}
             label="IČO "
             control={control}
           />
+          {errors.senderIco && <InputError message="Pole nesmí být prázdné." />}
           <ControllerInput
             name="senderDic"
             required={true}
             label="DIČ "
             control={control}
           />
+          {errors.senderDic && <InputError message="Pole nesmí být prázdné." />}
           <ControllerInput
             name="senderEmail"
             required={true}
             label="Email"
             control={control}
           />
+          {errors.senderEmail && (
+            <InputError message="Pole nesmí být prázdné." />
+          )}
+
           <ControllerInput
             name="senderAccountNumber"
             required={true}
             label="Číslo účtu"
             control={control}
           />
-          <Button
-            style={styles.formBtn}
-            mode="contained"
-            onPress={handleSubmit(senderDataHandler)}
-          >
-            vytvořit hlavičku
-          </Button>
+          {errors.senderAccountNumber && (
+            <InputError message="Pole nesmí být prázdné." />
+          )}
+          <View style={styles.btnContainer}>
+            <BasicButton
+              uppercase={true}
+              mode="outlined"
+              title="vytvořit hlavičku"
+              onPress={handleSubmit(senderDataHandler)}
+            />
+          </View>
         </View>
       </ScrollView>
     </>
@@ -142,6 +177,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     textTransform: "uppercase",
   },
+  btnContainer: { paddingBottom: 20 },
   formBtn: {
     padding: 5,
     marginVertical: 20,

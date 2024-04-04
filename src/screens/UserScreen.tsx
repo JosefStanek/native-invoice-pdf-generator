@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet, Modal, useColorScheme } from "react-native";
 import ScreenWrapper from "../components/ui/ScreenWrapper";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
@@ -6,12 +6,11 @@ import UserForm from "../components/UserScreen/UserForm";
 import { UserScreenProps } from "../types/NavigationType";
 import { useEffect, useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Modal, useColorScheme } from "react-native";
 import useGetUserData from "../hooks/useGetUserData";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
 import Error from "../components/ui/Error";
 import UserInfo from "../components/UserScreen/UserInfo";
-import { useTheme } from "react-native-paper";
+import { useTheme, Text } from "react-native-paper";
 const UserScreen: React.FC<UserScreenProps> = ({ navigation }) => {
   const colorSchema = useColorScheme();
   const theme = useTheme();

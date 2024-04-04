@@ -1,12 +1,13 @@
 import { MD3DarkTheme as DarkSchema } from "react-native-paper";
 export const DarkTheme = {
   ...DarkSchema,
+  text: "#EEEEEE",
   colors: {
-    primary: "crimson",
+    primary: "#222831",
     onPrimary: "rgb(71, 12, 122)",
     primaryContainer: "rgb(95, 43, 146)",
     onPrimaryContainer: "rgb(240, 219, 255)",
-    secondary: "#ffffff",
+    secondary: "#76ABAE",
     onSecondary: "rgb(54, 44, 63)",
     secondaryContainer: "rgb(77, 67, 87)",
     onSecondaryContainer: "rgb(237, 221, 246)",
@@ -18,7 +19,7 @@ export const DarkTheme = {
     onError: "rgb(105, 0, 5)",
     errorContainer: "rgb(147, 0, 10)",
     onErrorContainer: "rgb(255, 180, 171)",
-    background: "#121212",
+    background: "#31363F",
     onBackground: "rgb(231, 225, 229)",
     surface: "rgb(29, 27, 30)",
     onSurface: "rgb(231, 225, 229)",

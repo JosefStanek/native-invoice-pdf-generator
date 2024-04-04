@@ -22,6 +22,7 @@ const Navigation: React.FC = () => {
             height: 60,
             backgroundColor: theme.colors.primary,
           },
+          headerTintColor: theme.colors.secondary,
           headerStyle: { backgroundColor: theme.colors.primary },
           tabBarActiveTintColor: theme.colors.primary,
           tabBarInactiveTintColor: theme.colors.secondary,

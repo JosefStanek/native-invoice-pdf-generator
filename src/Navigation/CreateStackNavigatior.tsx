@@ -13,6 +13,7 @@ const CreateStackNavigatior = () => {
         headerStyle: {
           backgroundColor: theme.colors.primary,
         },
+        headerTintColor: theme.colors.secondary,
       }}
     >
       <Stack.Screen

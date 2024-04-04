@@ -1,35 +1,47 @@
-import { StyleSheet, View, Text, Pressable } from "react-native";
+import { StyleSheet } from "react-native";
+import { Button, useTheme } from "react-native-paper";
 
 interface ButtonProps {
-  children: React.ReactNode;
+  uppercase: boolean | undefined;
+  title: string;
   onPress: () => void;
+  mode:
+    | "text"
+    | "outlined"
+    | "contained"
+    | "elevated"
+    | "contained-tonal"
+    | undefined;
 }
 
-const BasicButton: React.FC<ButtonProps> = ({ children, onPress }) => {
+const BasicButton: React.FC<ButtonProps> = ({
+  uppercase,
+  title,
+  mode,
+  onPress,
+}) => {
+  const theme = useTheme();
   return (
-    <Pressable onPress={onPress}>
-      <View style={styles.container}>
-        <Text style={styles.btn}>{children}</Text>
-      </View>
-    </Pressable>
+    <Button
+      mode={mode}
+      style={[
+        styles.btn,
+        {
+          backgroundColor: theme.colors.background,
+        },
+      ]}
+      textColor={theme.colors.secondary}
+      onPress={onPress}
+      uppercase={uppercase}
+    >
+      {title}
+    </Button>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1,
-    borderColor: "indigo",
-    borderRadius: 10,
-    backgroundColor: "indigo",
-    width: "50%",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 10,
-    marginVertical: 10,
-    marginHorizontal: "auto",
-  },
   btn: {
-    color: "white",
+    borderRadius: 0,
   },
 });
 

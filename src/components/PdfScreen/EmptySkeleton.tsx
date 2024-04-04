@@ -1,11 +1,17 @@
-import { View, Text, StyleSheet } from "react-native";
-import React from "react";
-
-const EmptySkeleton = () => {
+import { View, StyleSheet } from "react-native";
+import { Text } from "react-native-paper";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+const EmptySkeleton: React.FC = () => {
+  const sender = useSelector((state: RootState) => state.sender);
   return (
     <View style={styles.emptyBox}>
       <Text style={styles.emptyTitle}>Náhled pro PDF.</Text>
-      <Text style={styles.emptyTitle}>Prosím nezapomeň vyplnit hlavičku.</Text>
+      {!sender.senderIco && (
+        <Text style={styles.emptyTitle}>
+          Prosím nezapomeň vyplnit hlavičku.
+        </Text>
+      )}
       <Text style={styles.emptyTitle}>Nejdřív musíš vytvořit PDF.</Text>
     </View>
   );

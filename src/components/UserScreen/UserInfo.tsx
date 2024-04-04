@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { View, Text, StyleSheet } from "react-native";
-import { Button } from "react-native-paper";
+import { View, StyleSheet } from "react-native";
+import { Text, useTheme } from "react-native-paper";
 import { resetSender } from "../../store/Slices/senderSlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import BasicButton from "../ui/BasicButton";
 const UserInfo: React.FC = () => {
   const dispatch = useDispatch();
+  const theme = useTheme();
   const {
     senderAccountNumber,
     senderCity,
@@ -24,46 +26,59 @@ const UserInfo: React.FC = () => {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.innerContainer}>
+      <View
+        style={[styles.innerContainer, { borderColor: theme.colors.secondary }]}
+      >
         <Text>Název společnosti</Text>
         <Text>{senderCompanyName}</Text>
       </View>
-      <View style={styles.innerContainer}>
+      <View
+        style={[styles.innerContainer, { borderColor: theme.colors.secondary }]}
+      >
         <Text>Kontakt</Text>
         <Text>{senderEmail}</Text>
       </View>
-      <View style={styles.innerContainer}>
+      <View
+        style={[styles.innerContainer, { borderColor: theme.colors.secondary }]}
+      >
         <Text>IČO</Text>
         <Text>{senderIco}</Text>
       </View>
-      <View style={styles.innerContainer}>
+      <View
+        style={[styles.innerContainer, { borderColor: theme.colors.secondary }]}
+      >
         <Text>DIČ</Text>
         <Text>CZ {senderDic}</Text>
       </View>
-      <View style={styles.innerContainer}>
+      <View
+        style={[styles.innerContainer, { borderColor: theme.colors.secondary }]}
+      >
         <Text>Město</Text>
         <Text>
           {senderCity}, {senderZipCode}
         </Text>
       </View>
-      <View style={styles.innerContainer}>
+      <View
+        style={[styles.innerContainer, { borderColor: theme.colors.secondary }]}
+      >
         <Text>Adresa</Text>
         <Text>
           {senderStreet} {senderNumberStreet}
         </Text>
       </View>
-      <View style={styles.innerContainer}>
+      <View
+        style={[styles.innerContainer, { borderColor: theme.colors.secondary }]}
+      >
         <Text>Číslo účtu</Text>
         <Text>{senderAccountNumber}</Text>
       </View>
       <View style={styles.btnContainer}>
-        <Button
-          style={styles.deleteBtn}
-          mode="contained"
+        <BasicButton
+          uppercase
+          title="smazat"
+          mode="outlined"
           onPress={resetSenderHandler}
-        >
-          smazat
-        </Button>
+        />
       </View>
     </View>
   );
@@ -76,10 +91,8 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     borderWidth: 1,
-    borderColor: "#ccc",
     padding: 10,
     marginBottom: 5,
-    backgroundColor: "white",
   },
   btnContainer: {
     marginTop: 20,

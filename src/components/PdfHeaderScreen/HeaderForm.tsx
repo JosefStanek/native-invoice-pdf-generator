@@ -1,11 +1,11 @@
-import { ScrollView, View, StyleSheet } from "react-native";
-import { Text, Button } from "react-native-paper";
+import { ScrollView, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useForm } from "react-hook-form";
 import ControllerInput from "../reusable/ControllerInput";
 import { useDispatch } from "react-redux";
 import { addSubscriber } from "../../store/Slices/subscriberSlice";
-
+import BasicButton from "../ui/BasicButton";
+import InputError from "./InputError";
 interface defaultValues {
   subscriberCompanyName: string;
   subscriberStreet: string;
@@ -72,7 +72,7 @@ const HeaderForm: React.FC = () => {
           required={true}
         />
         {errors.subscriberCompanyName && (
-          <Text style={styles.error}>Pole nesmí být prázdné.</Text>
+          <InputError message="Pole nesmí být prázdné." />
         )}
 
         <ControllerInput
@@ -82,7 +82,7 @@ const HeaderForm: React.FC = () => {
           required={true}
         />
         {errors.subscriberStreet && (
-          <Text style={styles.error}>Pole nesmí být prázdné.</Text>
+          <InputError message="Pole nesmí být prázdné." />
         )}
 
         <ControllerInput
@@ -92,7 +92,7 @@ const HeaderForm: React.FC = () => {
           required={true}
         />
         {errors.subscriberNumberStreet && (
-          <Text style={styles.error}>Pole nesmí být prázdné.</Text>
+          <InputError message="Pole nesmí být prázdné." />
         )}
 
         <ControllerInput
@@ -102,7 +102,7 @@ const HeaderForm: React.FC = () => {
           required={true}
         />
         {errors.subscriberZipCode && (
-          <Text style={styles.error}>Pole nesmí být prázdné.</Text>
+          <InputError message="Pole nesmí být prázdné." />
         )}
 
         <ControllerInput
@@ -112,7 +112,7 @@ const HeaderForm: React.FC = () => {
           required={true}
         />
         {errors.subscriberCity && (
-          <Text style={styles.error}>Pole nesmí být prázdné.</Text>
+          <InputError message="Pole nesmí být prázdné." />
         )}
 
         <ControllerInput
@@ -122,7 +122,7 @@ const HeaderForm: React.FC = () => {
           required={true}
         />
         {errors.subscriberIco && (
-          <Text style={styles.error}>Pole nesmí být prázdné.</Text>
+          <InputError message="Pole nesmí být prázdné." />
         )}
 
         <ControllerInput
@@ -132,7 +132,7 @@ const HeaderForm: React.FC = () => {
           required={true}
         />
         {errors.subscriberDic && (
-          <Text style={styles.error}>Pole nesmí být prázdné.</Text>
+          <InputError message="Pole nesmí být prázdné." />
         )}
 
         <ControllerInput
@@ -142,25 +142,20 @@ const HeaderForm: React.FC = () => {
           required={true}
         />
         {errors.subscriberEmail && (
-          <Text style={styles.error}>Pole nesmí být prázdné.</Text>
+          <InputError message="Pole nesmí být prázdné." />
         )}
       </View>
 
-      <Button
-        style={{ margin: 20 }}
-        mode="contained"
-        onPress={handleSubmit(sendHeaderHandler)}
-      >
-        další
-      </Button>
+      <View style={{ paddingBottom: 50, paddingTop: 10 }}>
+        <BasicButton
+          uppercase
+          title="další"
+          mode="contained"
+          onPress={handleSubmit(sendHeaderHandler)}
+        />
+      </View>
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  error: {
-    color: "red",
-  },
-});
 
 export default HeaderForm;
