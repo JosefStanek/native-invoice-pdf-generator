@@ -5,6 +5,7 @@ import { Text, useTheme } from "react-native-paper";
 import { resetSender } from "../../store/Slices/senderSlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import BasicButton from "../ui/BasicButton";
+import Card from "../ui/Card";
 const UserInfo: React.FC = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -25,7 +26,7 @@ const UserInfo: React.FC = () => {
     dispatch(resetSender());
   };
   return (
-    <View style={styles.container}>
+    <Card>
       <View
         style={[styles.innerContainer, { borderColor: theme.colors.secondary }]}
       >
@@ -80,7 +81,7 @@ const UserInfo: React.FC = () => {
           onPress={resetSenderHandler}
         />
       </View>
-    </View>
+    </Card>
   );
 };
 

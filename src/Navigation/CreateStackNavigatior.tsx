@@ -1,4 +1,7 @@
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
 import PdfHeaderScreen from "../screens/PdfHeaderScreen";
 import PdfContentScreen from "../screens/PdfContentScreen";
 import { useTheme } from "react-native-paper";
@@ -13,6 +16,7 @@ const CreateStackNavigatior = () => {
         headerStyle: {
           backgroundColor: theme.colors.primary,
         },
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         headerTintColor: theme.colors.secondary,
       }}
     >

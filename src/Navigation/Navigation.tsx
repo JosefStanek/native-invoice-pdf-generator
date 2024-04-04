@@ -64,21 +64,18 @@ const Navigation: React.FC = () => {
           }}
         />
 
-        {/* <Tab.Screen
+        <Tab.Screen
           name="Templates"
           component={TemplatesScreen}
           options={{
             title: "Šablony",
             tabBarIcon: ({ focused, color }) => (
-              <MaterialIcons
-                name="list-alt"
-                size={24}
-                color={color}
-                style={focused ? styles.focused : null}
-              />
+              <View style={focused ? styles.focused : null}>
+                <MaterialIcons name="list-alt" size={24} color={color} />
+              </View>
             ),
           }}
-        /> */}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
