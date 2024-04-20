@@ -1,42 +1,34 @@
 import { Picker } from "@react-native-picker/picker";
 import { StyleSheet, View } from "react-native";
-import { useState } from "react";
 import { useTheme } from "react-native-paper";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store/store";
+import { setTemplate } from "../../store/Slices/templateSlice";
 const TemplatePicker: React.FC = () => {
   const theme = useTheme();
-  const [selectedTemplate, setSelectedTemplate] = useState("template1");
-
+  const currentTemplate = useSelector(
+    (state: RootState) => state.template.currentTemplate
+  );
+  const dispatch = useDispatch();
+  console.log(currentTemplate);
   return (
     <View style={[styles.picker, { borderColor: theme.colors.secondary }]}>
       <Picker
         mode="dropdown"
-        selectedValue={selectedTemplate}
-        onValueChange={(itemValue, itemIndex) => setSelectedTemplate(itemValue)}
+        selectedValue={currentTemplate}
+        onValueChange={(itemValue, itemIndex) => {
+          dispatch(setTemplate(itemValue));
+        }}
         dropdownIconColor={theme.colors.secondary}
       >
         <Picker.Item
-          label="template1"
-          value={"template1"}
+          label="BasicTemplate"
+          value={"basicTemplate"}
           color={theme.colors.secondary}
         />
         <Picker.Item
-          label="template2"
-          value={"template2"}
-          color={theme.colors.secondary}
-        />
-        <Picker.Item
-          label="template3"
-          value={"template3"}
-          color={theme.colors.secondary}
-        />
-        <Picker.Item
-          label="template4"
-          value={"template4"}
-          color={theme.colors.secondary}
-        />
-        <Picker.Item
-          label="template5"
-          value={"template5"}
+          label="SmoothTemplate"
+          value={"smoothTemplate"}
           color={theme.colors.secondary}
         />
       </Picker>
