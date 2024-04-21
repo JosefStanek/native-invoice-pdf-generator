@@ -52,7 +52,7 @@ export const basicTemplate = (
         <title>Basic Template</title>
         <style>
             h1{text-align:center;padding:1rem}
-            body { font-family: Arial, sans-serif; padding: 1rem }
+            body { font-family: Arial, sans-serif; padding: 1rem;}
             .header{ text-align: left;display:flex;justify-content: space-around }
             .header-section { margin-bottom: 20px; padding:1rem }
             .invoice-table { width: 100%; border-collapse: collapse; }

@@ -4,7 +4,6 @@ import { MaterialIcons } from "@expo/vector-icons";
 import UserScreen from "../screens/UserScreen";
 import CreateScreen from "../screens/CreateScreen";
 import PdfScreen from "../screens/PdfScreen";
-import TemplatesScreen from "../screens/TemplatesScreen";
 import { StyleSheet, View } from "react-native";
 import { RootTabParamList } from "../types/NavigationType";
 import { useTheme } from "react-native-paper";
@@ -59,19 +58,6 @@ const Navigation: React.FC = () => {
             tabBarIcon: ({ focused, color }) => (
               <View style={focused ? styles.focused : null}>
                 <MaterialIcons name="picture-as-pdf" size={24} color={color} />
-              </View>
-            ),
-          }}
-        />
-
-        <Tab.Screen
-          name="Templates"
-          component={TemplatesScreen}
-          options={{
-            title: "Šablony",
-            tabBarIcon: ({ focused, color }) => (
-              <View style={focused ? styles.focused : null}>
-                <MaterialIcons name="list-alt" size={24} color={color} />
               </View>
             ),
           }}

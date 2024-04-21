@@ -10,7 +10,6 @@ const TemplatePicker: React.FC = () => {
     (state: RootState) => state.template.currentTemplate
   );
   const dispatch = useDispatch();
-  console.log(currentTemplate);
   return (
     <View style={[styles.picker, { borderColor: theme.colors.secondary }]}>
       <Picker
@@ -29,6 +28,11 @@ const TemplatePicker: React.FC = () => {
         <Picker.Item
           label="SmoothTemplate"
           value={"smoothTemplate"}
+          color={theme.colors.secondary}
+        />
+        <Picker.Item
+          label="LineTemplate"
+          value={"lineTemplate"}
           color={theme.colors.secondary}
         />
       </Picker>
