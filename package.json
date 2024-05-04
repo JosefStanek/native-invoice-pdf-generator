@@ -19,6 +19,7 @@
     "expo": "~50.0.14",
     "expo-file-system": "^16.0.8",
     "expo-print": "^12.8.1",
+    "expo-sharing": "^11.10.0",
     "expo-status-bar": "~1.11.1",
     "handlebars": "^4.7.8",
     "moment": "^2.30.1",

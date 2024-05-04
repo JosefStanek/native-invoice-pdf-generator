@@ -49,7 +49,7 @@ export const basicTemplate = (
   return `
     <html>
     <head>
-        <title>Basic Template</title>
+        <title>Faktura</title>
         <style>
             h1{text-align:center;padding:1rem}
             body { font-family: Arial, sans-serif; padding: 1rem;}

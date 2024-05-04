@@ -51,7 +51,7 @@ export const lineTemplate = (
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stylová Faktura</title>
+    <title>Faktura</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -80,7 +80,7 @@ export const lineTemplate = (
             font-size:12px;
         }
         .invoice-info {
-            margin-bottom: 40px;
+            margin-bottom: 10px;
         }
         .invoice-info .info-title {
             color: #333;
@@ -116,7 +116,14 @@ export const lineTemplate = (
             font-size: 12px;
             font-weight: 700;
             color: #333;
-            text-align: right;
+            text-align: left;
+            padding: 10px;
+        }
+        .date {
+            font-size: 12px;
+            font-weight: 700;
+            color: #333;
+            text-align: left;
             padding: 10px;
         }
     </style>
@@ -167,8 +174,14 @@ export const lineTemplate = (
                     ${itemsHtml ? itemsHtml : ""}
                 </tbody>
             </table>
+            <div  class="date">
+            Datum vystavení: ${moment().format("DD.MM.YYYY")} <br>
+            Datum splatnosti: ${moment()
+              .add(30, "days")
+              .format("DD.MM.YYYY")} <br>
+            </div>
             <div class="total-amount">
-                Celkem k úhradě: <strong>9800 Kč</strong>
+                Celkem k úhradě: <strong>${totalwithDPH} Kč</strong>
             </div>
         </div>
         <div class="invoice-footer">
