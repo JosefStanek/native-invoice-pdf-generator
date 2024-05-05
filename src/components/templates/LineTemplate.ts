@@ -28,7 +28,7 @@ interface Sender {
   senderAccountNumber: string;
 }
 
-export const lineTemplate = (
+export const limetTemplate = (
   items: Item[],
   subscriber: Subscriber,
   sender: Sender
@@ -121,7 +121,6 @@ export const lineTemplate = (
         }
         .date {
             font-size: 12px;
-            font-weight: 700;
             color: #333;
             text-align: left;
             padding: 10px;
@@ -181,7 +180,8 @@ export const lineTemplate = (
               .format("DD.MM.YYYY")} <br>
             </div>
             <div class="total-amount">
-                Celkem k úhradě: <strong>${totalwithDPH} Kč</strong>
+                Celkem k úhradě: <strong>${total} Kč bez DPH</strong> </br>
+                Celkem k úhradě: <strong>${totalwithDPH} Kč s DPH</strong>
             </div>
         </div>
         <div class="invoice-footer">

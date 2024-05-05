@@ -1,0 +1,18 @@
+{
+  "senderForm": {
+    "title": "Vytvořit hlavičku uživatele",
+    "companyName": "Název společnosti",
+    "contact": "Kontakt",
+    "ico": "IČO",
+    "dic": "DIČ",
+    "city": "Město",
+    "fullAddress": "Adresa",
+    "street": "Ulice",
+    "referenceNumber": "PSČ",
+    "streetNumber": "Číslo ulice",
+    "accountNumber": "Číslo Účtu",
+    "email": "Email",
+    "deleteButton": "smazat",
+    "createButton": "vytvořit hlavičku"
+  }
+}

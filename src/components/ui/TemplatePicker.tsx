@@ -31,8 +31,13 @@ const TemplatePicker: React.FC = () => {
           color={theme.colors.secondary}
         />
         <Picker.Item
-          label="LineTemplate"
-          value={"lineTemplate"}
+          label="LimetTemplate"
+          value={"limetTemplate"}
+          color={theme.colors.secondary}
+        />
+        <Picker.Item
+          label="DrawerTemplate"
+          value={"drawerTemplate"}
           color={theme.colors.secondary}
         />
       </Picker>

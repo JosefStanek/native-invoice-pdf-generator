@@ -7,6 +7,7 @@ import PdfScreen from "../screens/PdfScreen";
 import { StyleSheet, View } from "react-native";
 import { RootTabParamList } from "../types/NavigationType";
 import { useTheme } from "react-native-paper";
+
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
 const Navigation: React.FC = () => {

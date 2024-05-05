@@ -11,10 +11,12 @@ import { Toast } from "toastify-react-native";
 import InputError from "../PdfHeaderScreen/InputError";
 import { RootState } from "../../store/store";
 import BasicButton from "../ui/BasicButton";
+import { useTranslation } from "react-i18next";
 interface UserFormProps {
   closeModal: () => void;
 }
 const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
+  const { t } = useTranslation();
   const theme = useTheme();
   const sender = useSelector((state: RootState) => state.sender);
   const dispatch = useDispatch();
@@ -71,11 +73,11 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
           />
         </View>
         <View style={styles.formFlexbox}>
-          <Text style={styles.formTitle}>Vytvořit hlavičku uživatele</Text>
+          <Text style={styles.formTitle}>{t("senderForm.title")}</Text>
           <ControllerInput
             name="senderCompanyName"
             required={true}
-            label="Jméno firmy"
+            label={t("senderForm.companyName")}
             control={control}
           />
           {errors.senderCompanyName && (
@@ -84,7 +86,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
           <ControllerInput
             name="senderStreet"
             required={true}
-            label="Ulice"
+            label={t("senderForm.street")}
             control={control}
           />
           {errors.senderStreet && (
@@ -93,7 +95,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
           <ControllerInput
             name="senderNumberStreet"
             required={true}
-            label="číslo ulice"
+            label={t("senderForm.streetNumber")}
             control={control}
           />
           {errors.senderNumberStreet && (
@@ -102,7 +104,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
           <ControllerInput
             name="senderCity"
             required={true}
-            label="Město"
+            label={t("senderForm.city")}
             control={control}
           />
           {errors.senderCity && (
@@ -111,7 +113,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
           <ControllerInput
             name="senderZipCode"
             required={true}
-            label="PSČ"
+            label={t("senderForm.referenceNumber")}
             control={control}
           />
           {errors.senderZipCode && (
@@ -120,21 +122,21 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
           <ControllerInput
             name="senderIco"
             required={true}
-            label="IČO "
+            label={t("senderForm.ico")}
             control={control}
           />
           {errors.senderIco && <InputError message="Pole nesmí být prázdné." />}
           <ControllerInput
             name="senderDic"
             required={true}
-            label="DIČ "
+            label={t("senderForm.dic")}
             control={control}
           />
           {errors.senderDic && <InputError message="Pole nesmí být prázdné." />}
           <ControllerInput
             name="senderEmail"
             required={true}
-            label="Email"
+            label={t("senderForm.email")}
             control={control}
           />
           {errors.senderEmail && (
@@ -144,7 +146,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
           <ControllerInput
             name="senderAccountNumber"
             required={true}
-            label="Číslo účtu"
+            label={t("senderForm.accountNumber")}
             control={control}
           />
           {errors.senderAccountNumber && (
@@ -154,7 +156,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
             <BasicButton
               uppercase={true}
               mode="outlined"
-              title="vytvořit hlavičku"
+              title={t("senderForm.createButton")}
               onPress={handleSubmit(senderDataHandler)}
             />
           </View>
