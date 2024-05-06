@@ -14,5 +14,16 @@
     "email": "Email",
     "deleteButton": "smazat",
     "createButton": "vytvořit hlavičku"
+  },
+  "userScreen": {
+    "emptyHeaderMsg": "Zatím neexistuje žádná vyplněná hlavička.",
+    "errorHeaderMsg": "něco se pokazilo"
+  },
+  "createScreen": {
+    "title": "Vytvořit hlavičku"
+  },
+  "createScreenStack": {
+    "subscriberHeader": "Odběratel",
+    "itemsHeader": "Položky"
   }
 }

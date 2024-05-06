@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, SafeAreaView } from "react-native";
 import { useTheme } from "react-native-paper";
 
 interface ScreenWrapperProps {
@@ -8,14 +8,14 @@ interface ScreenWrapperProps {
 const ScreenWrapper: React.FC<ScreenWrapperProps> = ({ children }) => {
   const theme = useTheme();
   return (
-    <View
+    <SafeAreaView
       style={[
         styles.ScreenWrapper,
         { backgroundColor: theme.colors.background },
       ]}
     >
       {children}
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -11,6 +11,7 @@ import LoadingSpinner from "../components/ui/LoadingSpinner";
 import Error from "../components/ui/Error";
 import UserInfo from "../components/UserScreen/UserInfo";
 import { useTheme, Text } from "react-native-paper";
+import { useTranslation } from "react-i18next";
 const UserScreen: React.FC<UserScreenProps> = ({ navigation }) => {
   const colorSchema = useColorScheme();
   const theme = useTheme();
@@ -18,7 +19,7 @@ const UserScreen: React.FC<UserScreenProps> = ({ navigation }) => {
   const [showModal, setShowModal] = useState(false);
   const sender = useSelector((state: RootState) => state.sender);
   const hasData = sender.senderIco !== "";
-
+  const { t } = useTranslation();
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -37,6 +38,12 @@ const UserScreen: React.FC<UserScreenProps> = ({ navigation }) => {
             color={theme.colors.secondary}
             onPress={() => setShowModal(true)}
           />
+          <MaterialIcons
+            name={"settings-applications"}
+            size={30}
+            color={theme.colors.secondary}
+            onPress={() => console.log("set language")}
+          />
         </View>
       ),
     });
@@ -46,14 +53,12 @@ const UserScreen: React.FC<UserScreenProps> = ({ navigation }) => {
     <ScreenWrapper>
       {hasData && <UserInfo />}
       {!hasData && (
-        <Text style={styles.infoTitle}>
-          Zatím neexistuje žádná vyplněná hlavička.
-        </Text>
+        <Text style={styles.infoTitle}>{t("userScreen.emptyHeaderMsg")}</Text>
       )}
       <Modal visible={showModal} animationType="slide">
         {loading && <LoadingSpinner />}
         {data && <UserForm closeModal={() => setShowModal(false)} />}
-        {error && <Error message="Něco se pokazilo" />}
+        {error && <Error message={t("userScreen.errorHeaderMsg")} />}
       </Modal>
     </ScreenWrapper>
   );
