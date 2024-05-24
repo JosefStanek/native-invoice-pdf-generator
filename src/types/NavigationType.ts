@@ -4,6 +4,7 @@ export type RootTabParamList = {
   PDF: undefined;
   Create: undefined;
   Templates: undefined;
+  Settings: undefined;
 };
 
 export type UserScreenProps = BottomTabScreenProps<RootTabParamList, "User">;

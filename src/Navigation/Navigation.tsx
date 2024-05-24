@@ -7,6 +7,7 @@ import PdfScreen from "../screens/PdfScreen";
 import { StyleSheet, View } from "react-native";
 import { RootTabParamList } from "../types/NavigationType";
 import { useTheme } from "react-native-paper";
+import SettingsScreen from "../screens/SettingsScreen";
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
@@ -59,6 +60,21 @@ const Navigation: React.FC = () => {
             tabBarIcon: ({ focused, color }) => (
               <View style={focused ? styles.focused : null}>
                 <MaterialIcons name="picture-as-pdf" size={24} color={color} />
+              </View>
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{
+            tabBarIcon: ({ focused, color }) => (
+              <View style={focused ? styles.focused : null}>
+                <MaterialIcons
+                  name="settings-applications"
+                  size={24}
+                  color={color}
+                />
               </View>
             ),
           }}

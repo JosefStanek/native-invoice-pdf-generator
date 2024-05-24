@@ -5,8 +5,6 @@ import { PDFScreenProps } from "../types/NavigationType";
 import { MaterialIcons } from "@expo/vector-icons";
 import { View } from "react-native";
 import { useTheme } from "react-native-paper";
-import FileSystem from "expo-file-system";
-import Sharing from "expo-sharing";
 import Pdf from "../components/PdfScreen/Pdf";
 import EmptySkeleton from "../components/PdfScreen/EmptySkeleton";
 import ScreenWrapper from "../components/ui/ScreenWrapper";
@@ -43,32 +41,6 @@ const PdfScreen: React.FC<PDFScreenProps> = ({ navigation }) => {
         ) : null,
     });
   }, [data]);
-
-  // const printPDF = async () => {
-  //   try {
-  //     const { uri } = await Print.printToFileAsync({
-  //       html: htmlContent,
-  //       base64: false, // Pokud je true, vrátí base64, ale pro ukládání do souboru nechceme
-  //     });
-
-  //     const fileName = "my_generated_pdf.pdf";
-  //     const filePath = `${FileSystem.documentDirectory}${fileName}`;
-
-  //     await FileSystem.moveAsync({
-  //       from: uri,
-  //       to: filePath,
-  //     });
-
-  //     // Nyní je soubor uložen, můžete ho sdílet nebo otevřít
-  //     if (await Sharing.isAvailableAsync()) {
-  //       await Sharing.shareAsync(filePath);
-  //     } else {
-  //       console.log(`PDF uložen na: ${filePath}`);
-  //     }
-  //   } catch (error) {
-  //     console.error("Chyba při generování nebo ukládání PDF:", error);
-  //   }
-  // };
 
   return (
     <ScreenWrapper>

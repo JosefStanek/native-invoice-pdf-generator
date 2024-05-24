@@ -38,12 +38,6 @@ const UserScreen: React.FC<UserScreenProps> = ({ navigation }) => {
             color={theme.colors.secondary}
             onPress={() => setShowModal(true)}
           />
-          <MaterialIcons
-            name={"settings-applications"}
-            size={30}
-            color={theme.colors.secondary}
-            onPress={() => console.log("set language")}
-          />
         </View>
       ),
     });

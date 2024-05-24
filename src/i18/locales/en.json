@@ -1,3 +1,32 @@
 {
-  "user-form-companyName": "Company name"
+  "senderForm": {
+    "title": "Create user header",
+    "companyName": "Company name",
+    "contact": "Contact",
+    "ico": "CRM",
+    "dic": "DRM",
+    "city": "City",
+    "fullAddress": "Address",
+    "street": "Street",
+    "referenceNumber": "Postal code",
+    "streetNumber": "Street number",
+    "accountNumber": "Account number",
+    "email": "Email",
+    "deleteButton": "delete",
+    "createButton": "create header"
+  },
+  "userScreen": {
+    "emptyHeaderMsg": "There is no header yet.",
+    "errorHeaderMsg": "something was wrong"
+  },
+  "createScreen": {
+    "title": "Create header"
+  },
+  "settingsScreen": {
+    "title": "Setting"
+  },
+  "createScreenStack": {
+    "subscriberHeader": "Subscriber",
+    "itemsHeader": "Items"
+  }
 }

@@ -22,6 +22,9 @@
   "createScreen": {
     "title": "Vytvořit hlavičku"
   },
+  "settingsScreen": {
+    "title": "Nastavení"
+  },
   "createScreenStack": {
     "subscriberHeader": "Odběratel",
     "itemsHeader": "Položky"
