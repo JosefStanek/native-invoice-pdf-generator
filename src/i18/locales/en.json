@@ -28,5 +28,12 @@
   "createScreenStack": {
     "subscriberHeader": "Subscriber",
     "itemsHeader": "Items"
+  },
+  "LanguagePicker": {
+    "cs": "czech",
+    "en": "english"
+  },
+  "routerTitle": {
+    "settingsTitle": "Settings"
   }
 }

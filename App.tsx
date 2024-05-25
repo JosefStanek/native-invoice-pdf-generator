@@ -6,8 +6,29 @@ import ToastManager from "toastify-react-native";
 import ThemeProvider from "./src/theme/ThemeProvider";
 import { StatusBar } from "expo-status-bar";
 import { I18nextProvider } from "react-i18next";
-import i18next from "./src/i18/i18n.config";
+import initI18n from "./src/i18/i18n.config";
+import { useState, useEffect } from "react";
+import { SafeAreaView, ActivityIndicator, StyleSheet } from "react-native";
+import i18next from "i18next";
 export default function App() {
+  const [isI18nInitialized, setIsI18nInitialized] = useState(false);
+
+  useEffect(() => {
+    const initializeI18n = async () => {
+      await initI18n();
+      setIsI18nInitialized(true);
+    };
+
+    initializeI18n();
+  }, []);
+
+  if (!isI18nInitialized) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </SafeAreaView>
+    );
+  }
   return (
     <I18nextProvider i18n={i18next}>
       <Provider store={store}>
@@ -20,3 +41,15 @@ export default function App() {
     </I18nextProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 20,
+    marginBottom: 20,
+  },
+});

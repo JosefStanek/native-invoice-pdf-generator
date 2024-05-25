@@ -1,19 +1,20 @@
-import { View, Text, StyleSheet } from "react-native";
-import { useTranslation } from "react-i18next";
+import { View, StyleSheet } from "react-native";
+import LanguagePicker from "../reusable/LanguagePicker";
+import { Text } from "react-native-paper";
 
 const LanguageSettings: React.FC = () => {
-  const { t } = useTranslation();
-
   return (
-    <View>
-      <Text style={styles.title}>{t("settingsScreen.title")}</Text>
+    <View style={styles.container}>
+      <Text>Výběr jazyka</Text>
+      <LanguagePicker />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  title: {
-    textAlign: "center",
+  container: {
+    paddingVertical: 20,
+    paddingHorizontal: 10,
   },
 });
 

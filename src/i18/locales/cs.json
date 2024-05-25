@@ -28,5 +28,12 @@
   "createScreenStack": {
     "subscriberHeader": "Odběratel",
     "itemsHeader": "Položky"
+  },
+  "LanguagePicker": {
+    "cs": "čeština",
+    "en": "angličtina"
+  },
+  "routerTitle": {
+    "settingsTitle": "Nastavení"
   }
 }

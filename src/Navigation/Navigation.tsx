@@ -8,11 +8,14 @@ import { StyleSheet, View } from "react-native";
 import { RootTabParamList } from "../types/NavigationType";
 import { useTheme } from "react-native-paper";
 import SettingsScreen from "../screens/SettingsScreen";
+import { useTranslation } from "react-i18next";
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
 const Navigation: React.FC = () => {
   const theme = useTheme();
+  const { t } = useTranslation();
+  const settingsTitle = t("routerTitle.settingsTitle");
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -68,6 +71,7 @@ const Navigation: React.FC = () => {
           name="Settings"
           component={SettingsScreen}
           options={{
+            title: settingsTitle,
             tabBarIcon: ({ focused, color }) => (
               <View style={focused ? styles.focused : null}>
                 <MaterialIcons
