@@ -3,6 +3,7 @@ import { deleteItem } from "../../store/Slices/itemsSlice";
 import { View, Pressable, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme, Text } from "react-native-paper";
+import { useTranslation } from "react-i18next";
 
 interface ItemProps {
   item: { id: string; title: string; price: string; DPHPrice: string };
@@ -11,6 +12,7 @@ interface ItemProps {
 const Item: React.FC<ItemProps> = ({ item }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
+  const { t } = useTranslation();
   return (
     <View style={[styles.item, { backgroundColor: theme.colors.background }]}>
       <View style={styles.itemContent}>
@@ -21,7 +23,7 @@ const Item: React.FC<ItemProps> = ({ item }) => {
             borderColor: theme.colors.secondary,
           }}
         >
-          <Text>Položka</Text>
+          <Text>{t("AddItemsScreen.itemList.item.name")}</Text>
           <Text> {item.title}</Text>
         </View>
         <View
@@ -31,11 +33,11 @@ const Item: React.FC<ItemProps> = ({ item }) => {
             borderColor: theme.colors.secondary,
           }}
         >
-          <Text>Částka</Text>
+          <Text>{t("AddItemsScreen.itemList.item.amount")}</Text>
           <Text>{item.price}</Text>
         </View>
         <View style={{ flex: 1 }}>
-          <Text>S DPH</Text>
+          <Text>{t("AddItemsScreen.itemList.item.dph")}</Text>
           <Text>{item.DPHPrice}</Text>
         </View>
       </View>

@@ -17,7 +17,7 @@ const Navigation: React.FC = () => {
   const { t } = useTranslation();
   const userTitle = t("routerTitle.userTitle");
   const settingsTitle = t("routerTitle.settingsTitle");
-
+  const createStackTitle = t("createScreenStack.title");
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -50,7 +50,7 @@ const Navigation: React.FC = () => {
           name="Create"
           component={CreateScreen}
           options={{
-            title: "Vytvořit pdf",
+            title: createStackTitle,
             tabBarIcon: ({ focused, color }) => (
               <View style={focused ? styles.focused : null}>
                 <MaterialIcons name="add-box" size={24} color={color} />

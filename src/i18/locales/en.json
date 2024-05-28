@@ -15,6 +15,21 @@
     "deleteButton": "delete",
     "createButton": "create header"
   },
+  "subscriberForm": {
+    "title": "Create user header",
+    "companyName": "Company name",
+    "contact": "Contact",
+    "ico": "CRM",
+    "dic": "DRM",
+    "city": "City",
+    "fullAddress": "Address",
+    "street": "Street",
+    "referenceNumber": "Postal code",
+    "streetNumber": "Street number",
+    "accountNumber": "Account number",
+    "email": "Email",
+    "nextButton": "next"
+  },
   "userScreen": {
     "emptyHeaderMsg": "There is no header yet.",
     "errorHeaderMsg": "something was wrong"
@@ -27,8 +42,22 @@
     "languageHeader": "Language settings"
   },
   "createScreenStack": {
+    "title": "Create PDF",
     "subscriberHeader": "Subscriber",
     "itemsHeader": "Items"
+  },
+  "AddItemsScreen": {
+    "header": "Add item",
+    "name": "name",
+    "amount": "amount",
+    "addButton": "add item",
+    "itemList": {
+      "item": {
+        "name": "Item",
+        "amount": "Amount",
+        "dph": "WITH WAT"
+      }
+    }
   },
   "LanguagePicker": {
     "cs": "czech",
@@ -37,5 +66,8 @@
   "routerTitle": {
     "userTitle": "Header",
     "settingsTitle": "Settings"
+  },
+  "errors": {
+    "emptyInput": "Field must not be empty."
   }
 }

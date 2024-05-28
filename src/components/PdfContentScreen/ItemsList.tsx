@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet } from "react-native";
 import { Text } from "react-native-paper";
 import Item from "./Item";
+import { useTranslation } from "react-i18next";
 
 interface Item {
   id: string;
@@ -13,6 +14,7 @@ interface ItemsListProps {
 }
 
 const ItemsList: React.FC<ItemsListProps> = ({ items }) => {
+  const { t } = useTranslation();
   return (
     <>
       {items.length > 0 && (
@@ -26,7 +28,7 @@ const ItemsList: React.FC<ItemsListProps> = ({ items }) => {
         />
       )}
       {items.length === 0 && (
-        <Text style={styles.titleItem}>Přidej položku</Text>
+        <Text style={styles.titleItem}>{t("AddItemsScreen.header.name")}</Text>
       )}
     </>
   );

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addSubscriber } from "../../store/Slices/subscriberSlice";
 import BasicButton from "../ui/BasicButton";
 import InputError from "./InputError";
+import { useTranslation } from "react-i18next";
 interface defaultValues {
   subscriberCompanyName: string;
   subscriberStreet: string;
@@ -18,6 +19,7 @@ interface defaultValues {
 }
 
 const HeaderForm: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigation<any>();
   const {
@@ -67,89 +69,89 @@ const HeaderForm: React.FC = () => {
       <View style={{ gap: 10 }}>
         <ControllerInput
           name="subscriberCompanyName"
-          label="Název firmy"
+          label={t("subscriberForm.companyName")}
           control={control}
           required={true}
         />
         {errors.subscriberCompanyName && (
-          <InputError message="Pole nesmí být prázdné." />
+          <InputError message={t("errors.emptyInput")} />
         )}
 
         <ControllerInput
           name="subscriberStreet"
-          label="Ulice"
+          label={t("subscriberForm.street")}
           control={control}
           required={true}
         />
         {errors.subscriberStreet && (
-          <InputError message="Pole nesmí být prázdné." />
+          <InputError message={t("errors.emptyInput")} />
         )}
 
         <ControllerInput
           name="subscriberNumberStreet"
-          label="Ulice"
+          label={t("subscriberForm.streetNumber")}
           control={control}
           required={true}
         />
         {errors.subscriberNumberStreet && (
-          <InputError message="Pole nesmí být prázdné." />
+          <InputError message={t("errors.emptyInput")} />
         )}
 
         <ControllerInput
           name="subscriberZipCode"
-          label="PSČ"
+          label={t("subscriberForm.referenceNumber")}
           control={control}
           required={true}
         />
         {errors.subscriberZipCode && (
-          <InputError message="Pole nesmí být prázdné." />
+          <InputError message={t("errors.emptyInput")} />
         )}
 
         <ControllerInput
           name="subscriberCity"
-          label="Město"
+          label={t("subscriberForm.city")}
           control={control}
           required={true}
         />
         {errors.subscriberCity && (
-          <InputError message="Pole nesmí být prázdné." />
+          <InputError message={t("errors.emptyInput")} />
         )}
 
         <ControllerInput
           name="subscriberIco"
-          label="IČO"
+          label={t("subscriberForm.ico")}
           control={control}
           required={true}
         />
         {errors.subscriberIco && (
-          <InputError message="Pole nesmí být prázdné." />
+          <InputError message={t("errors.emptyInput")} />
         )}
 
         <ControllerInput
           name="subscriberDic"
-          label="DIČO"
+          label={t("subscriberForm.dic")}
           control={control}
           required={true}
         />
         {errors.subscriberDic && (
-          <InputError message="Pole nesmí být prázdné." />
+          <InputError message={t("errors.emptyInput")} />
         )}
 
         <ControllerInput
           name="subscriberEmail"
-          label="Email"
+          label={t("subscriberForm.email")}
           control={control}
           required={true}
         />
         {errors.subscriberEmail && (
-          <InputError message="Pole nesmí být prázdné." />
+          <InputError message={t("errors.emptyInput")} />
         )}
       </View>
 
       <View style={{ paddingBottom: 50, paddingTop: 10 }}>
         <BasicButton
           uppercase
-          title="další"
+          title={t("subscriberForm.nextButton")}
           mode="contained"
           onPress={handleSubmit(sendHeaderHandler)}
         />

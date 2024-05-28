@@ -15,6 +15,20 @@
     "deleteButton": "smazat",
     "createButton": "vytvořit hlavičku"
   },
+  "subscriberForm": {
+    "companyName": "Název společnosti",
+    "contact": "Kontakt",
+    "ico": "IČO",
+    "dic": "DIČ",
+    "city": "Město",
+    "fullAddress": "Adresa",
+    "street": "Ulice",
+    "referenceNumber": "PSČ",
+    "streetNumber": "Číslo ulice",
+    "accountNumber": "Číslo Účtu",
+    "email": "Email",
+    "nextButton": "další"
+  },
   "userScreen": {
     "emptyHeaderMsg": "Zatím neexistuje žádná vyplněná hlavička.",
     "errorHeaderMsg": "něco se pokazilo"
@@ -27,8 +41,22 @@
     "languageHeader": "Výběr jazyka"
   },
   "createScreenStack": {
+    "title": "Vytvořit PDF",
     "subscriberHeader": "Odběratel",
     "itemsHeader": "Položky"
+  },
+  "AddItemsScreen": {
+    "header": "Přidej položku",
+    "name": "název",
+    "amount": "částka",
+    "addButton": "přidat položku",
+    "itemList": {
+      "item": {
+        "name": "Položka",
+        "amount": "Částka",
+        "dph": "S DPH"
+      }
+    }
   },
   "LanguagePicker": {
     "cs": "čeština",
@@ -37,5 +65,8 @@
   "routerTitle": {
     "userTitle": "Hlavička",
     "settingsTitle": "Nastavení"
+  },
+  "errors": {
+    "emptyInput": "Pole nesmí být prázdné"
   }
 }
