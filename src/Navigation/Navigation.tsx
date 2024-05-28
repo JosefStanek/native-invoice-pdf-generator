@@ -15,7 +15,9 @@ const Tab = createBottomTabNavigator<RootTabParamList>();
 const Navigation: React.FC = () => {
   const theme = useTheme();
   const { t } = useTranslation();
+  const userTitle = t("routerTitle.userTitle");
   const settingsTitle = t("routerTitle.settingsTitle");
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -36,7 +38,7 @@ const Navigation: React.FC = () => {
           name="User"
           component={UserScreen}
           options={{
-            title: "Hlavička",
+            title: userTitle,
             tabBarIcon: ({ focused, color }) => (
               <View style={focused ? styles.focused : null}>
                 <MaterialIcons name="person" size={24} color={color} />

@@ -23,7 +23,8 @@
     "title": "Create header"
   },
   "settingsScreen": {
-    "title": "Setting"
+    "title": "Setting",
+    "languageHeader": "Language settings"
   },
   "createScreenStack": {
     "subscriberHeader": "Subscriber",
@@ -34,6 +35,7 @@
     "en": "english"
   },
   "routerTitle": {
+    "userTitle": "Header",
     "settingsTitle": "Settings"
   }
 }

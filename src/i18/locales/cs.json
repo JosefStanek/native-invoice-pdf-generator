@@ -23,7 +23,8 @@
     "title": "Vytvořit hlavičku"
   },
   "settingsScreen": {
-    "title": "Nastavení"
+    "title": "Nastavení",
+    "languageHeader": "Výběr jazyka"
   },
   "createScreenStack": {
     "subscriberHeader": "Odběratel",
@@ -34,6 +35,7 @@
     "en": "angličtina"
   },
   "routerTitle": {
+    "userTitle": "Hlavička",
     "settingsTitle": "Nastavení"
   }
 }

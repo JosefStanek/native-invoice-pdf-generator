@@ -8,8 +8,9 @@ import { StatusBar } from "expo-status-bar";
 import { I18nextProvider } from "react-i18next";
 import initI18n from "./src/i18/i18n.config";
 import { useState, useEffect } from "react";
-import { SafeAreaView, ActivityIndicator, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import i18next from "i18next";
+import LoadingSpinner from "./src/components/ui/LoadingSpinner";
 export default function App() {
   const [isI18nInitialized, setIsI18nInitialized] = useState(false);
 
@@ -25,7 +26,7 @@ export default function App() {
   if (!isI18nInitialized) {
     return (
       <SafeAreaView style={styles.container}>
-        <ActivityIndicator size="large" color="#0000ff" />
+        <LoadingSpinner />
       </SafeAreaView>
     );
   }
