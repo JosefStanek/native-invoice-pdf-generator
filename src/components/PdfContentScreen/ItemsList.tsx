@@ -28,7 +28,7 @@ const ItemsList: React.FC<ItemsListProps> = ({ items }) => {
         />
       )}
       {items.length === 0 && (
-        <Text style={styles.titleItem}>{t("AddItemsScreen.header.name")}</Text>
+        <Text style={styles.titleItem}>{t("AddItemsScreen.header")}</Text>
       )}
     </>
   );

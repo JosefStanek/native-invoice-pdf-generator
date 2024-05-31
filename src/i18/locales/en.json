@@ -41,6 +41,14 @@
     "title": "Setting",
     "languageHeader": "Language settings"
   },
+  "PDFscreen": {
+    "Skeleton": {
+      "header": "Preview for PDF.",
+      "requireHeader": "Please remember to fill in the header.",
+      "requireSubscriber": "First you have to create a PDF."
+    },
+    "sendButton": "send PDF"
+  },
   "createScreenStack": {
     "title": "Create PDF",
     "subscriberHeader": "Subscriber",
@@ -59,6 +67,11 @@
       }
     }
   },
+  "PDFContentScreen": {
+    "addButton": "add item",
+    "itemName": "name",
+    "itemAmount": "amount"
+  },
   "LanguagePicker": {
     "cs": "czech",
     "en": "english"
@@ -69,5 +82,11 @@
   },
   "errors": {
     "emptyInput": "Field must not be empty."
+  },
+  "templates": {
+    "basicTemplate": "Basic template",
+    "smoothTemplate": "Smooth template",
+    "limetTemplate": "Limet template",
+    "drawerTemplate": "Drawer template"
   }
 }

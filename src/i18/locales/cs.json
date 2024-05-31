@@ -40,6 +40,14 @@
     "title": "Nastavení",
     "languageHeader": "Výběr jazyka"
   },
+  "PDFscreen": {
+    "Skeleton": {
+      "header": "Náhled pro PDF.",
+      "requireHeader": "Prosím nezapomeň vyplnit hlavičku.",
+      "requireSubscriber": "Nejdřív musíš vytvořit PDF."
+    },
+    "sendButton": "poslat PDF"
+  },
   "createScreenStack": {
     "title": "Vytvořit PDF",
     "subscriberHeader": "Odběratel",
@@ -58,6 +66,11 @@
       }
     }
   },
+  "PDFContentScreen": {
+    "addButton": "přidat položku",
+    "itemName": "název",
+    "itemAmount": "částka"
+  },
   "LanguagePicker": {
     "cs": "čeština",
     "en": "angličtina"
@@ -68,5 +81,11 @@
   },
   "errors": {
     "emptyInput": "Pole nesmí být prázdné"
+  },
+  "templates": {
+    "basicTemplate": "Základní šablona",
+    "smoothTemplate": "Hladká šablona",
+    "limetTemplate": "Limetková šablona",
+    "drawerTemplate": "Zásuvná šablona"
   }
 }

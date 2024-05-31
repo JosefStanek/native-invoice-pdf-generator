@@ -2,17 +2,21 @@ import { View, StyleSheet } from "react-native";
 import { Text } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { useTranslation } from "react-i18next";
 const EmptySkeleton: React.FC = () => {
   const sender = useSelector((state: RootState) => state.sender);
+  const { t } = useTranslation();
   return (
     <View style={styles.emptyBox}>
-      <Text style={styles.emptyTitle}>Náhled pro PDF.</Text>
+      <Text style={styles.emptyTitle}>{t("PDFscreen.Skeleton.header")}</Text>
       {!sender.senderIco && (
         <Text style={styles.emptyTitle}>
-          Prosím nezapomeň vyplnit hlavičku.
+          {t("PDFscreen.Skeleton.requireHeader")}
         </Text>
       )}
-      <Text style={styles.emptyTitle}>Nejdřív musíš vytvořit PDF.</Text>
+      <Text style={styles.emptyTitle}>
+        {t("PDFscreen.Skeleton.requireSubscriber")}
+      </Text>
     </View>
   );
 };

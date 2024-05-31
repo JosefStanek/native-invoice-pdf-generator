@@ -9,7 +9,9 @@ import BasicButton from "../ui/BasicButton";
 import * as Print from "expo-print";
 import * as Sharing from "expo-sharing";
 import * as FileSystem from "expo-file-system";
+import { useTranslation } from "react-i18next";
 const Pdf: React.FC = () => {
+  const { t } = useTranslation();
   const currentTemplateName = useSelector(
     (state: RootState) => state.template.currentTemplate
   );
@@ -50,7 +52,7 @@ const Pdf: React.FC = () => {
       <WebView originWhitelist={["*"]} source={{ html: htmlContent }} />
       <View style={{ paddingVertical: 20 }}>
         <BasicButton
-          title="poslat pdf"
+          title={t("PDFscreen.sendButton")}
           onPress={createPdf}
           uppercase
           mode="outlined"

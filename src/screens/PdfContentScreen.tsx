@@ -7,12 +7,13 @@ import { RootState } from "../store/store";
 import { addItem } from "../store/Slices/itemsSlice";
 import BasicButton from "../components/ui/BasicButton";
 import ScreenWrapper from "../components/ui/ScreenWrapper";
+import { useTranslation } from "react-i18next";
 const PdfContentScreen: React.FC = () => {
   const dispatch = useDispatch();
   const { items } = useSelector((state: RootState) => state.items);
   const [title, setTitle] = useState<string>("");
   const [price, setPrice] = useState<string>("");
-
+  const { t } = useTranslation();
   const addItemHandler = () => {
     if (!title || !price) {
       Alert.alert("Název i částku nesmít být prázdné.");
@@ -29,13 +30,13 @@ const PdfContentScreen: React.FC = () => {
       <ItemsList items={items} />
       <View style={styles.handler}>
         <TextInput
-          label={"název"}
+          label={t("PDFContentScreen.itemName")}
           mode="outlined"
           value={title}
           onChangeText={(value) => setTitle(value)}
         />
         <TextInput
-          label={"částka"}
+          label={t("PDFContentScreen.itemAmount")}
           mode="outlined"
           value={price?.toString()}
           keyboardType="numeric"
@@ -47,7 +48,7 @@ const PdfContentScreen: React.FC = () => {
         <BasicButton
           uppercase
           mode="contained"
-          title="přidat položku"
+          title={t("PDFContentScreen.addButton")}
           onPress={addItemHandler}
         />
       </View>

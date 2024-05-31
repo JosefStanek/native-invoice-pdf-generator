@@ -4,7 +4,9 @@ import { useTheme } from "react-native-paper";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { setTemplate } from "../../store/Slices/templateSlice";
+import { useTranslation } from "react-i18next";
 const TemplatePicker: React.FC = () => {
+  const { t } = useTranslation();
   const theme = useTheme();
   const currentTemplate = useSelector(
     (state: RootState) => state.template.currentTemplate
@@ -21,22 +23,22 @@ const TemplatePicker: React.FC = () => {
         dropdownIconColor={theme.colors.secondary}
       >
         <Picker.Item
-          label="BasicTemplate"
+          label={t("templates.basicTemplate")}
           value={"basicTemplate"}
           color={theme.colors.secondary}
         />
         <Picker.Item
-          label="SmoothTemplate"
+          label={t("templates.smoothTemplate")}
           value={"smoothTemplate"}
           color={theme.colors.secondary}
         />
         <Picker.Item
-          label="LimetTemplate"
+          label={t("templates.limetTemplate")}
           value={"limetTemplate"}
           color={theme.colors.secondary}
         />
         <Picker.Item
-          label="DrawerTemplate"
+          label={t("templates.drawerTemplate")}
           value={"drawerTemplate"}
           color={theme.colors.secondary}
         />
