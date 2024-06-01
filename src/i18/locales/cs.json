@@ -82,6 +82,10 @@
   "errors": {
     "emptyInput": "Pole nesmí být prázdné"
   },
+  "toastMessage": {
+    "save": "uloženo",
+    "error": "Něco se pokazilo, opakuj později."
+  },
   "templates": {
     "basicTemplate": "Základní šablona",
     "smoothTemplate": "Hladká šablona",

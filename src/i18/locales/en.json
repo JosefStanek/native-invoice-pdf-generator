@@ -83,6 +83,10 @@
   "errors": {
     "emptyInput": "Field must not be empty."
   },
+  "toastMessage": {
+    "save": "saved",
+    "error": "Something went wrong, retry later."
+  },
   "templates": {
     "basicTemplate": "Basic template",
     "smoothTemplate": "Smooth template",

@@ -38,6 +38,8 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
       senderZipCode: "",
     },
   });
+  const successToast = t("toastMessage.save");
+  const errorToast = t("toastMessage.error");
   const senderDataHandler = async (data: formData) => {
     try {
       await AsyncStorage.setItem("userData", JSON.stringify(data));
@@ -54,11 +56,12 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
         senderZipCode: "",
       });
       closeModal();
-      Toast.success("uloženo", "bottom");
+      Toast.success(successToast, "bottom");
     } catch (error) {
-      console.error("Chyba při ukládání formulářových dat:", error);
+      Toast.error(errorToast, "bottom");
     }
   };
+
   return (
     <>
       <ScrollView
@@ -81,7 +84,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
             control={control}
           />
           {errors.senderCompanyName && (
-            <InputError message="Pole nesmí být prázdné." />
+            <InputError message={t("errors.emptyInput")} />
           )}
           <ControllerInput
             name="senderStreet"
@@ -90,7 +93,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
             control={control}
           />
           {errors.senderStreet && (
-            <InputError message="Pole nesmí být prázdné." />
+            <InputError message={t("errors.emptyInput")} />
           )}
           <ControllerInput
             name="senderNumberStreet"
@@ -99,7 +102,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
             control={control}
           />
           {errors.senderNumberStreet && (
-            <InputError message="Pole nesmí být prázdné." />
+            <InputError message={t("errors.emptyInput")} />
           )}
           <ControllerInput
             name="senderCity"
@@ -107,9 +110,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
             label={t("senderForm.city")}
             control={control}
           />
-          {errors.senderCity && (
-            <InputError message="Pole nesmí být prázdné." />
-          )}
+          {errors.senderCity && <InputError message={t("errors.emptyInput")} />}
           <ControllerInput
             name="senderZipCode"
             required={true}
@@ -117,7 +118,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
             control={control}
           />
           {errors.senderZipCode && (
-            <InputError message="Pole nesmí být prázdné." />
+            <InputError message={t("errors.emptyInput")} />
           )}
           <ControllerInput
             name="senderIco"
@@ -125,14 +126,14 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
             label={t("senderForm.ico")}
             control={control}
           />
-          {errors.senderIco && <InputError message="Pole nesmí být prázdné." />}
+          {errors.senderIco && <InputError message={t("errors.emptyInput")} />}
           <ControllerInput
             name="senderDic"
             required={true}
             label={t("senderForm.dic")}
             control={control}
           />
-          {errors.senderDic && <InputError message="Pole nesmí být prázdné." />}
+          {errors.senderDic && <InputError message={t("errors.emptyInput")} />}
           <ControllerInput
             name="senderEmail"
             required={true}
@@ -140,7 +141,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
             control={control}
           />
           {errors.senderEmail && (
-            <InputError message="Pole nesmí být prázdné." />
+            <InputError message={t("errors.emptyInput")} />
           )}
 
           <ControllerInput
@@ -150,7 +151,7 @@ const UserForm: React.FC<UserFormProps> = ({ closeModal }) => {
             control={control}
           />
           {errors.senderAccountNumber && (
-            <InputError message="Pole nesmí být prázdné." />
+            <InputError message={t("errors.emptyInput")} />
           )}
           <View style={styles.btnContainer}>
             <BasicButton

@@ -28,7 +28,11 @@ const LanguagePicker: React.FC = () => {
   };
   return (
     <View>
-      <Picker selectedValue={language} onValueChange={handleLanguageChange}>
+      <Picker
+        selectedValue={language}
+        onValueChange={handleLanguageChange}
+        dropdownIconColor={theme.colors.secondary}
+      >
         <Picker.Item
           label={t("LanguagePicker.cs")}
           value={"cs"}
