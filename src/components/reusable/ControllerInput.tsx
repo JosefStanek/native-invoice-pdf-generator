@@ -1,4 +1,4 @@
-import { TextInput } from "react-native-paper";
+import { TextInput, useTheme } from "react-native-paper";
 import { Controller } from "react-hook-form";
 interface ControllerInputProps {
   name: string;
@@ -13,6 +13,7 @@ const ControllerInput: React.FC<ControllerInputProps> = ({
   label,
   required,
 }) => {
+  const theme = useTheme();
   return (
     <Controller
       control={control}
@@ -24,6 +25,7 @@ const ControllerInput: React.FC<ControllerInputProps> = ({
           onChangeText={onChange}
           value={value}
           onBlur={onBlur}
+          activeOutlineColor={theme.colors.secondary}
         />
       )}
       name={name}

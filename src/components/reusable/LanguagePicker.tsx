@@ -4,10 +4,11 @@ import { Picker } from "@react-native-picker/picker";
 import { useTranslation } from "react-i18next";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import i18next from "i18next";
+import { useTheme } from "react-native-paper";
 const LanguagePicker: React.FC = () => {
   const [language, setLanguage] = useState("cs");
   const { t } = useTranslation();
-
+  const theme = useTheme();
   useEffect(() => {
     const loadLanguage = async () => {
       const savedLanguage = await AsyncStorage.getItem("language");
@@ -28,8 +29,16 @@ const LanguagePicker: React.FC = () => {
   return (
     <View>
       <Picker selectedValue={language} onValueChange={handleLanguageChange}>
-        <Picker.Item label={t("LanguagePicker.cs")} value={"cs"} />
-        <Picker.Item label={t("LanguagePicker.en")} value={"en"} />
+        <Picker.Item
+          label={t("LanguagePicker.cs")}
+          value={"cs"}
+          color={theme.colors.secondary}
+        />
+        <Picker.Item
+          label={t("LanguagePicker.en")}
+          value={"en"}
+          color={theme.colors.secondary}
+        />
       </Picker>
     </View>
   );
