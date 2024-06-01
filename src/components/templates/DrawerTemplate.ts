@@ -50,112 +50,135 @@ export const drawerTemplate = (
   <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<title>Faktura</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: white;
-        color: black;
-    }
-
-    .invoice-container {
-        width: 80%;
-        margin: auto;
-        padding: 20px;
-    }
-
-    header, footer {
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-        text-align: center;
-    }
-
-    .content {
-        display: flex;
-        margin-top: 20px;
-    }
-
-    .left-column {
-        width: 20%;
-        height:100%;
-        padding-left: 10px;
-        background-color: #333;
-        color: white;
-        border-right: 1px solid #ccc;
-    }
-
-    .right-column {
-        flex-grow: 1;
-        padding-left: 20px;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    table, th, td {
-        border: 1px solid black;
-    }
-
-    th, td {
-        padding: 8px;
-        text-align: left;
-    }
-
-    footer {
-        text-align: center;
-        padding: 10px;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faktura</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 2px auto;
+            padding: 5px;
+            display: flex;
+        }
+        .sidebar {
+            width: 30%;
+            padding: 20px;
+            background-color: #343a40;
+            color: #fff;
+            border-radius: 12px 0 0 12px;
+        }
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+        .sidebar p {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        .main-content {
+            width: 70%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 0 12px 12px 0;
+        }
+        .main-content h1 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+            color: #343a40;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #dee2e6;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #495057;
+            color: #fff;
+            font-size: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .total {
+            text-align: left;
+            font-size: 10px;
+            font-weight: bold;
+            color: #343a40;
+        }
+        .footer {
+            text-align: center;
+            font-size: 10px;
+            color: #6c757d;
+            margin-top: 20px;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-<div class="invoice-container">
-    <header>
-        <h2>FAKTURA</h2>
-    </header>
-    <div class="content">
-        <div class="left-column">
-            <section class="billing-info">
-                <div class="sender">
-                    <h4>Odběratel</h4>
-                    <p>Jméno</p>
-                    <p>Adresa</p>
-                    <p>ID odběratele: ID</p>
-                </div>
-                <div class="recipient">
-                    <h4>Dodavatel</h4>
-                    <p>Jméno</p>
-                    <p>Adresa</p>
-                    <p>ID dodavatele: ID</p>
-                </div>
-            </section>
-        </div>
-        <div class="right-column">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Množství</th>
-                        <th>C. položky</th>
-                        <th>Popis</th>
-                        <th>Jednotková cena</th>
-                        <th>Sleva</th>
-                        <th>Celkem za řádek</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Přidejte položky faktury zde -->
-                </tbody>
-            </table>
+
+<div class="container">
+    <div class="sidebar">
+        <h2>Odesílatel</h2>
+        <p>${sender.senderCompanyName}<br>
+        ${sender.senderStreet}, ${sender.senderNumberStreet}<br>
+        ${sender.senderCity}<br>
+        IČO:${sender.senderIco}, DIČ: CZ${sender.senderDic}<br>
+        ${sender.senderEmail}<br></p>
+        <br>
+        <h2>Odběratel</h2>
+        <p>${subscriber.companyName ? subscriber.companyName : ""}<br>
+        ${subscriber.street ? subscriber.street : ""}, ${
+    subscriber.numberStreet ? subscriber.numberStreet : ""
+  }<br>
+        ${subscriber.city ? subscriber.city : ""}<br>
+        IČO: ${subscriber.ico ? subscriber.ico : ""}, DIČ: ${
+    subscriber.zipCode ? subscriber.zipCode : ""
+  }<br></p>
+        <br>
+        <h2>Splatnost</h2>
+        <p>${moment().add(30, "days").format("DD.MM.YYYY")}</p>
+        <h2>Vystavení</h2>
+        <p>${moment().format("DD.MM.YYYY")}</p>
+    </div>
+    <div class="main-content">
+        <h1>Faktura</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Položka</th>
+                    <th>Cena</th>
+                    <th>Cena s DPH</th>
+                </tr>
+            </thead>
+            <tbody>
+            ${itemsHtml ? itemsHtml : ""}
+            </tbody>
+        </table>
+        <div class="total">
+        <p>Částku prosím uhraďte na bankovní účet:<strong> ${
+          sender.senderAccountNumber
+        }</strong></p>
+            <p>Celkem: ${total} kč</p>
+            <p>Celkem s DPH: ${totalwithDPH} kč</p>
         </div>
     </div>
-    <footer>
-        <p>Děkujeme Vám za využití našich služeb.</p>
-    </footer>
 </div>
+
 </body>
 </html>
     `;

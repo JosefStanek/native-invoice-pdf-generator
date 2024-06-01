@@ -1,5 +1,4 @@
 import moment from "moment";
-import Handlebars from "handlebars";
 
 interface Item {
   id: string;
@@ -19,7 +18,23 @@ interface Subscriber {
   email: string;
 }
 
-export const smoothTemplate = (items: Item[], subscriber: Subscriber) => {
+interface Sender {
+  senderCompanyName: string;
+  senderStreet: string;
+  senderNumberStreet: string;
+  senderZipCode: string;
+  senderCity: string;
+  senderIco: string;
+  senderDic: string;
+  senderEmail: string;
+  senderAccountNumber: string;
+}
+
+export const smoothTemplate = (
+  items: Item[],
+  subscriber: Subscriber,
+  sender: Sender
+) => {
   const itemsHtml = items
     .map((item: Item) => {
       return `<tr>
@@ -128,8 +143,12 @@ export const smoothTemplate = (items: Item[], subscriber: Subscriber) => {
         <div class="invoice-header">
             <h1>Faktura</h1>
             <div>
-                <strong>Datum vydání:</strong> 20.04.2024<br>
-                <strong>Splatnost:</strong> 04.05.2024
+                <strong>Datum vydání:</strong>${moment().format(
+                  "DD.MM.YYYY"
+                )}<br>
+                <strong>Splatnost:</strong> ${moment()
+                  .add(30, "days")
+                  .format("DD.MM.YYYY")}
             </div>
         </div>
         <div class="invoice-details">
@@ -137,21 +156,28 @@ export const smoothTemplate = (items: Item[], subscriber: Subscriber) => {
             <th>Odběratel</th>
                 <tr>
                     <td class="value">
-                        Název společnosti odběratele<br>
-                        Adresa<br>
-                        Město, PSČ<br>
-                        IČO: 12345678<br>
-                        DIČ: CZ12345678
+                    Firma: ${
+                      subscriber.companyName ? subscriber.companyName : ""
+                    }<br>
+                    Adresa: ${subscriber.street ? subscriber.street : ""}, ${
+    subscriber.numberStreet ? subscriber.numberStreet : ""
+  }<br>
+                    Město: ${subscriber.city ? subscriber.city : ""}<br>
+                    IČO: ${subscriber.ico ? subscriber.ico : ""}, DIČ: ${
+    subscriber.zipCode ? subscriber.zipCode : ""
+  }<br>
                     </td>
                 </tr>
                 <th>Odesílatel</th>
                 <tr>
                     <td class="value">
-                        Vaše firma, s.r.o.<br>
-                        Vaše adresa<br>
-                        Vaše město, PSČ<br>
-                        IČO: 87654321<br>
-                        DIČ: CZ87654321
+                    Firma: ${sender.senderCompanyName}<br>
+                    Adresa: ${sender.senderStreet}, ${
+    sender.senderNumberStreet
+  }<br>
+                    Město: ${sender.senderCity}<br>
+                    IČO:${sender.senderIco}, DIČ: CZ${sender.senderDic}<br>
+                    Email: ${sender.senderEmail}<br>
                     </td>
                 </tr>
             </table>
@@ -161,24 +187,12 @@ export const smoothTemplate = (items: Item[], subscriber: Subscriber) => {
                 <thead>
                     <tr>
                         <th>Název</th>
-                        <th>Množství</th>
                         <th>Cena za jednotku</th>
                         <th>Cena s DPH</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Položka 1</td>
-                        <td>2</td>
-                        <td>500 Kč</td>
-                        <td>600 Kč</td>
-                    </tr>
-                    <tr>
-                        <td>Položka 2</td>
-                        <td>5</td>
-                        <td>200 Kč</td>
-                        <td>240 Kč</td>
-                    </tr>
+                ${itemsHtml ? itemsHtml : ""}
                     <!-- Další položky -->
                 </tbody>
             </table>
