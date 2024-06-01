@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "native-invoice-pdf-generator",
-    "slug": "native-invoice-pdf-generator",
+    "name": "invoice generator",
+    "slug": "invoice-generator",
+    "description": "Invoice generator for android.",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,22 +12,33 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "userInterfaceStyle": "automatic",
       "supportsTablet": true
     },
     "android": {
-      "permissions": ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"],
+      "permissions": [
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
       "userInterfaceStyle": "automatic",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.josefstanek.invoicegenerator"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "sdkVersion": "51.0.0"
+    "sdkVersion": "51.0.0",
+    "extra": {
+      "eas": {
+        "projectId": "4205cf22-714c-483f-9b75-24c58dc2efec"
+      }
+    }
   }
 }
